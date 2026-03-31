@@ -2,23 +2,23 @@
 
 ## Project Overview
 
-This is a **Unity XR development** project targeting cross-platform XR applications.
+This is a **Unity XR development** project for a **self-developed XR glasses product**.
 
 | Component | Details |
 |-----------|---------|
 | **Engine** | Unity 6.0.27f1 |
-| **Language** | C# |
+| **Language** | C# (Unity app), C++/Java (native runtime) |
 | **XR Framework** | XR Interaction Toolkit (XRI) |
-| **XR Runtime** | OpenXR (self-developed runtime) |
-| **SDK** | Self-developed XR SDK |
-| **Platforms** | Meta Quest, Pico, PCVR (cross-platform) |
+| **XR Runtime** | OpenXR (self-developed, native C++/Java → `.aar`) |
+| **SDK** | Self-developed XR SDK (UPM package) |
+| **Platforms** | Self-developed XR glasses (standalone), PC streaming to glasses |
 | **Render Pipeline** | URP (Universal Render Pipeline) |
 | **Rendering** | Single Pass Instanced (mandatory for XR) |
 
 ## Critical XR Constraints
 
 - **Frame budget**: 11ms at 90Hz, 8.3ms at 120Hz — XR frame drops cause nausea
-- **Mobile XR draw calls**: < 100 (Quest/Pico), PCVR: < 300
+- **Draw calls**: < 100 — mobile XR GPU budget is tight
 - **GC allocations in hot paths**: ZERO tolerance — use pools, NonAlloc APIs, NativeArray
 - **Never move camera programmatically** without user control (motion sickness)
 - **Always support both controllers AND hand tracking**
@@ -27,11 +27,18 @@ This is a **Unity XR development** project targeting cross-platform XR applicati
 ## Project Structure
 
 ```
+Packages/
+└── com.yourcompany.xr.sdk/     # Self-developed XR SDK (UPM package)
+    ├── package.json
+    ├── Runtime/                 # SDK C# scripts (public API, subsystem wrappers)
+    │   └── Android/
+    │       └── xr-runtime.aar  # Native OpenXR runtime (built from C++/Java project)
+    ├── Editor/                  # SDK editor tools
+    └── Tests/                   # SDK package tests
+
 Assets/
 ├── Scripts/
 │   ├── Core/           # Core framework, shared utilities
-│   ├── SDK/            # Self-developed XR SDK (public API)
-│   ├── Runtime/        # OpenXR runtime implementation
 │   ├── XR/             # XR interaction and tracking systems
 │   ├── Interaction/    # User interaction logic
 │   ├── UI/             # Spatial UI components
@@ -46,12 +53,34 @@ Assets/
 └── Prototypes/         # Isolated prototype experiments
 ```
 
+> **Architecture note:** The SDK is installed as a UPM package, not part of Assets/Scripts.
+> The OpenXR runtime is a native C++/Java project compiled into an `.aar` file, stored
+> inside the SDK package at `Runtime/Android/`. Unity C# code calls into the runtime
+> via the SDK's managed API — never directly.
+
 ## Coding Standards
 
-### C# Conventions
-- `PascalCase` for public members, types, methods
-- `_camelCase` for private fields
+### C# Naming (Unity convention, NOT .NET)
+
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Classes / Structs | PascalCase | `ARTrackedImageManager` |
+| Interfaces | `I` + PascalCase | `IReferenceImageLibrary` |
+| Enums & Members | PascalCase | `TrackingState.Tracking` |
+| Constants | `k_` + PascalCase | `k_MaxRetries` |
+| Static fields | `s_` + PascalCase | `s_Instance` |
+| Instance private fields | `m_` + PascalCase | `m_Camera` |
+| Public/Protected properties | camelCase | `referenceLibrary` |
+| Public/Protected events | camelCase | `trackablesChanged` |
+| All methods | PascalCase | `TryGetRenderingParameters()` |
+| Parameters & locals | camelCase | `commandBuffer` |
+
+### C# Formatting
+- Allman brace style (opening brace on new line)
+- 4-space indentation
 - `[SerializeField] private` over `public` for inspector fields
+- Expression-bodied members for simple accessors (`get => m_Field;`)
+- Space after keywords (`if (`, `for (`), no space before method parens (`DoSomething()`)
 - Assembly definitions (`.asmdef`) for all code folders
 - `readonly` and `const` where applicable
 
@@ -98,7 +127,7 @@ Assets/
 - `xr-specialist` — XR interaction, tracking, spatial UI authority
 - `unity-xri-specialist` — XR Interaction Toolkit deep implementation
 - `openxr-runtime-specialist` — OpenXR runtime and SDK layer
-- `platform-specialist` — Cross-platform build and certification
+- `platform-specialist` — Build management for glasses and PC streaming
 - `sdk-developer` — SDK API design and versioning
 
 ### Unity Core
@@ -151,8 +180,8 @@ Assets/
 
 ## Performance Budgets
 
-| Metric | Mobile XR (Quest/Pico) | PCVR |
-|--------|----------------------|------|
+| Metric | XR Glasses (standalone) | PC Streaming |
+|--------|------------------------|--------------|
 | Frame time | 11ms (90Hz) | 11ms (90Hz) |
 | Draw calls | < 100 | < 300 |
 | Triangles | < 750K | < 2M |

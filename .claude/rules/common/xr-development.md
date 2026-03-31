@@ -10,8 +10,8 @@ paths:
 ## Performance (Non-Negotiable)
 - Frame budget: 11ms at 90Hz, 8.3ms at 120Hz — XR drops are visible and cause nausea
 - Use Single Pass Instanced rendering — never multi-pass for XR
-- Mobile XR draw calls: < 100 (Quest/Pico), PCVR: < 300
-- Use Fixed Foveated Rendering on supported mobile platforms
+- XR glasses draw calls: < 100, PC streaming: < 300
+- Use Fixed Foveated Rendering on XR glasses where supported
 - Avoid dynamic shadows on mobile XR — use baked lighting + light probes
 - Profile on target hardware, not just editor — XR perf varies dramatically
 

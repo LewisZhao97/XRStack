@@ -16,7 +16,7 @@ When this skill is invoked:
    - Target FPS / frame budget (XR: 11ms at 90Hz, 8.3ms at 120Hz)
    - Memory budget (total and per-system)
    - Load time targets
-   - Draw call budgets (mobile XR: <100, PCVR: <300)
+   - Draw call budgets (XR glasses: <100, PC streaming: <300)
    - Network bandwidth limits (if multiplayer)
 
 3. **Analyze the codebase** for common performance issues:

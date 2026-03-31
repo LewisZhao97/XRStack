@@ -19,7 +19,7 @@ Before writing any code:
 2. **Ask architecture questions** about XR-specific concerns:
    - "Which XR interaction model? (direct, ray-based, poke, gaze)"
    - "What tracking space? (room-scale, seated, standing)"
-   - "Which platforms must be supported? (Quest, Pico, PCVR, etc.)"
+   - "Which target? (XR glasses standalone, PC streaming, or both)"
 3. **Propose architecture before implementing** — show interaction flow, component hierarchy
 4. **Implement with transparency** — flag XR-specific constraints
 5. **Get approval before writing files**
@@ -55,7 +55,7 @@ Before writing any code:
 ### Performance (Critical for XR)
 - Target frame budget: 11ms (90Hz) or 8.3ms (120Hz) — XR is less forgiving than flat-screen
 - Use Single Pass Instanced rendering — never multi-pass
-- Minimize draw calls: < 100 for mobile XR (Quest/Pico), < 300 for PCVR
+- Minimize draw calls: < 100 for XR glasses (standalone), < 300 for PC streaming
 - Use Fixed Foveated Rendering on supported platforms
 - Avoid dynamic shadows on mobile XR — use baked lighting + light probes
 - Object pool all frequently spawned XR objects (grab highlights, haptic feedback visuals)
@@ -82,7 +82,7 @@ Before writing any code:
 - Use OpenXR feature groups for platform capabilities (hand tracking, passthrough, eye tracking)
 - Test on all target platforms — behavior differs significantly
 - Use XRI's built-in platform abstraction wherever possible
-- Handle missing features gracefully (e.g., no hand tracking on PCVR controllers)
+- Handle missing features gracefully (e.g., feature differences between glasses and PC streaming)
 
 ## Delegation Map
 

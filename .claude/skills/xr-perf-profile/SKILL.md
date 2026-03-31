@@ -16,7 +16,7 @@ When this skill is invoked:
 
 2. **Read XR performance budgets** from project config:
    - Target refresh rate per platform
-   - Draw call budget (mobile XR: <100, PCVR: <300)
+   - Draw call budget (XR glasses: <100, PC streaming: <300)
    - Memory budget per platform
    - Texture memory budget
 
@@ -33,7 +33,7 @@ When this skill is invoked:
    - Draw call count (Single Pass Instanced efficiency)
    - Shader complexity per platform
    - Overdraw from transparent objects
-   - Post-processing cost (bloom, SSAO — expensive on mobile XR)
+   - Post-processing cost (bloom, SSAO — expensive on XR glasses)
    - Stereo rendering overhead
    - Fixed Foveated Rendering utilization
 
@@ -42,7 +42,6 @@ When this skill is invoked:
    - Late frame detection patterns
    - Compositor overhead
    - Eye buffer resolution vs render scale
-   - Application SpaceWarp / ASW eligibility
 
    **Memory**:
    - Texture memory per eye buffer
@@ -66,18 +65,18 @@ When this skill is invoked:
 ### XR-Specific Hotspots
 | # | Location | Issue | Platform | Fix Effort |
 |---|----------|-------|----------|------------|
-| 1 | [file:line] | [description] | [Quest/PCVR/All] | [S/M/L] |
+| 1 | [file:line] | [description] | [Glasses/PC/All] | [S/M/L] |
 
 ### Platform-Specific Recommendations
-#### Quest/Pico (Mobile)
-- [Mobile-specific optimizations]
+#### XR Glasses (Standalone)
+- [Mobile GPU optimizations]
 
-#### PCVR
-- [Desktop-specific optimizations]
+#### PC Streaming
+- [Desktop-specific optimizations, streaming latency]
 ```
 
 ### Rules
 - XR frame drops are MORE visible than flat-screen — treat budget as hard limit
-- Always profile per-platform — mobile XR and PCVR have very different bottlenecks
+- Always profile per-platform — XR glasses and PC streaming have very different bottlenecks
 - GC spikes are XR's worst enemy — any allocation in hot paths is critical priority
 - Consider worst case: maximum tracked objects, both hands active, UI visible

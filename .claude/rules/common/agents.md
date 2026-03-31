@@ -13,7 +13,7 @@
 | xr-specialist | XR development authority | XR interaction, tracking, spatial UI |
 | unity-xri-specialist | XRI implementation | XR Interaction Toolkit components |
 | openxr-runtime-specialist | OpenXR runtime/SDK | Runtime layer, OpenXR compliance |
-| platform-specialist | Cross-platform builds | Quest, Pico, PCVR deployment |
+| platform-specialist | Platform builds | XR glasses (standalone) and PC streaming deployment |
 | sdk-developer | SDK architecture | Public API, versioning, documentation |
 
 ### Development Agents

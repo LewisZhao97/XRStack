@@ -1,7 +1,7 @@
 ---
 name: build-platform
-description: "Cross-platform Unity XR build management: configure, validate, and trigger builds for target XR platforms (Quest, Pico, PCVR). Checks platform-specific settings, quality levels, and Addressables groups."
-argument-hint: "[quest|pico|pcvr|all|validate]"
+description: "Unity XR build management: configure, validate, and trigger builds for self-developed XR glasses (standalone Android) and PC streaming targets. Checks platform-specific settings, quality levels, and Addressables groups."
+argument-hint: "[glasses|pc-streaming|all|validate]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, Bash
 ---
@@ -9,9 +9,8 @@ allowed-tools: Read, Glob, Grep, Bash
 When this skill is invoked:
 
 1. **Determine target platform** from argument:
-   - `quest` — Meta Quest (Android, Vulkan/GLES, arm64)
-   - `pico` — Pico (Android, Vulkan/GLES, arm64)
-   - `pcvr` — PC VR (Windows, DirectX/Vulkan, x86_64)
+   - `glasses` — XR glasses standalone (Android, Vulkan/GLES, arm64)
+   - `pc-streaming` — PC streaming to glasses (Windows, DirectX/Vulkan, x86_64)
    - `all` — validate all platform configurations
    - `validate` — check current settings without building
 
@@ -23,21 +22,23 @@ When this skill is invoked:
 
 3. **Validate platform settings**:
 
-   **Quest/Pico (Android)**:
+   **XR Glasses — Standalone (Android)**:
    - [ ] Target API level ≥ 29
    - [ ] ARM64 architecture selected
    - [ ] Vulkan as primary graphics API
    - [ ] Texture compression: ASTC
    - [ ] Minimum SDK version appropriate
-   - [ ] OpenXR features: hand tracking, passthrough (if needed)
+   - [ ] OpenXR features: hand tracking (if needed)
    - [ ] Fixed Foveated Rendering configured
-   - [ ] Quality level appropriate for mobile
+   - [ ] Quality level appropriate for mobile GPU
+   - [ ] Self-developed SDK package installed and configured
 
-   **PCVR (Windows)**:
+   **PC Streaming (Windows)**:
    - [ ] DirectX 11/12 or Vulkan selected
    - [ ] x86_64 architecture
    - [ ] Higher quality settings enabled
-   - [ ] SteamVR/OpenXR runtime configured
+   - [ ] Streaming pipeline configured (latency, encoding)
+   - [ ] OpenXR runtime configured
 
    **All Platforms**:
    - [ ] Single Pass Instanced rendering enabled

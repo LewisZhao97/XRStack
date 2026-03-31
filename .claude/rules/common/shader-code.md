@@ -23,7 +23,7 @@ performance, and cross-platform XR compatibility.
 
 ## Performance Requirements (XR Critical)
 - Document the target platform and complexity budget for each shader
-- Use `half` precision on mobile XR (Quest/Pico) where full precision isn't needed
+- Use `half` precision on XR glasses (mobile GPU) where full precision isn't needed
 - Minimize texture samples in fragment shaders
 - Avoid dynamic branching in fragment shaders — use `step()`, `lerp()`, `smoothstep()`
 - No texture reads inside loops
@@ -31,7 +31,7 @@ performance, and cross-platform XR compatibility.
 - XR: Must support Single Pass Instanced rendering (`UNITY_STEREO_INSTANCING_ENABLED`)
 
 ## Cross-Platform XR
-- Test shaders on minimum spec target hardware (Quest 2/3, Pico 4)
+- Test shaders on target XR glasses hardware
 - Provide fallback/simplified versions for lower quality tiers
 - Document which render pipeline the shader targets (URP required for most XR)
 - Ensure stereo rendering compatibility — use `unity_StereoEyeIndex` correctly

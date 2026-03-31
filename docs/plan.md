@@ -22,7 +22,7 @@
 - [x] `xr-specialist` — XR interaction, tracking, spatial UI authority
 - [x] `unity-xri-specialist` — XRI component architecture and patterns
 - [x] `openxr-runtime-specialist` — OpenXR runtime and SDK layer
-- [x] `platform-specialist` — Cross-platform build, certification, optimization
+- [x] `platform-specialist` — Build management for XR glasses and PC streaming
 - [x] `sdk-developer` — SDK public API design, versioning, documentation
 
 ### Unity Core Agents (5)
@@ -69,7 +69,7 @@
 
 ### XR-Specific Skills (3)
 - [x] `/xr-test` — XR interaction, locomotion, comfort test generation
-- [x] `/build-platform` — Cross-platform build validation (Quest, Pico, PCVR)
+- [x] `/build-platform` — Build validation (XR glasses, PC streaming)
 - [x] `/xr-perf-profile` — XR frame budget analysis (72/90/120Hz)
 
 ### Development Skills (7)
@@ -108,7 +108,7 @@
 - [ ] `/xr-comfort-check` — Validate comfort settings (vignette, locomotion, snap turn)
 - [ ] `/xr-accessibility-audit` — XR-specific accessibility review (seated mode, one-handed, visual aids)
 - [ ] `/sdk-release` — SDK-specific release workflow (semver, changelog, UPM publish)
-- [ ] `/platform-cert` — Platform certification checklist (Meta, Pico store requirements)
+- [ ] `/platform-cert` — Platform certification checklist
 - [ ] `/scene-audit` — Unity scene analysis (hierarchy depth, component count, draw calls)
 - [ ] `/shader-review` — Shader performance review (variant count, precision, platform compat)
 - [ ] `/team-xr` — Orchestrate XR team (xr-specialist + unity-xri + platform + perf)
@@ -221,7 +221,7 @@
 ### Potential New Docs
 - [ ] `xr-architecture.md` — XR subsystem architecture diagram and data flow
 - [ ] `sdk-api-guide.md` — SDK public API usage guide and conventions
-- [ ] `platform-matrix.md` — Feature support matrix across Quest/Pico/PCVR
+- [ ] `platform-matrix.md` — Feature support matrix across XR glasses and PC streaming
 - [ ] `performance-budgets.md` — Detailed per-platform performance budgets
 - [ ] `openxr-extensions.md` — Supported OpenXR extensions and usage patterns
 
@@ -248,7 +248,7 @@ Update existing `.claude/docs/` to match the restructured workflow. Fix stale re
 Add `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills. Add `openxr-runtime.md` and `sdk-api.md` rules. Add `.meta` file and `.asmdef` validation hooks.
 
 ### Phase 3 — Medium-term (platform maturity)
-Add `/platform-cert`, `/sdk-release`, `/migrate-unity` skills. Add `ar-specialist` and `multiplayer-xr-specialist` agents. Create platform feature matrix documentation.
+Add `/platform-cert`, `/sdk-release`, `/migrate-unity` skills. Add `ar-specialist` and `multiplayer-xr-specialist` agents. Create platform feature matrix documentation for XR glasses and PC streaming.
 
 ### Phase 4 — Long-term (CI/CD and automation)
 Add `ci-cd-unity-specialist` agent. Integrate with Unity Cloud Build or GameCI. Add automated performance regression hooks. Add shader variant budget enforcement.
