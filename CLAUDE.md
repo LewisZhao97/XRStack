@@ -28,29 +28,28 @@ This is a **Unity XR development** project for a **self-developed XR glasses pro
 
 ```
 Packages/
-└── com.yourcompany.xr.sdk/     # Self-developed XR SDK (UPM package)
+└── com.yourcompany.xr.sdk/      # XR SDK (installed in manifest.json or UPM)
     ├── package.json
     ├── Runtime/                 # SDK C# scripts (public API, subsystem wrappers)
-    │   └── Android/
-    │       └── xr-runtime.aar  # Native OpenXR runtime (built from C++/Java project)
+    │   └── Android/             # Runtime
     ├── Editor/                  # SDK editor tools
     └── Tests/                   # SDK package tests
 
 Assets/
 ├── Scripts/
-│   ├── Core/           # Core framework, shared utilities
-│   ├── XR/             # XR interaction and tracking systems
-│   ├── Interaction/    # User interaction logic
-│   ├── UI/             # Spatial UI components
-│   ├── Networking/     # Multiplayer (if applicable)
-│   └── Gameplay/       # Application-specific features
-├── Shaders/            # Custom shaders (URP, XR-compatible)
-├── Prefabs/            # Reusable prefabs
-├── Data/               # Configuration data (ScriptableObjects, JSON)
-├── Tests/              # Unity Test Framework tests
-│   ├── EditMode/       # Pure logic tests
-│   └── PlayMode/       # MonoBehaviour and XR tests
-└── Prototypes/         # Isolated prototype experiments
+│   ├── Core/                    # Core framework, shared utilities
+│   ├── XR/                      # XR interaction and tracking systems
+│   ├── Interaction/             # User interaction logic
+│   ├── UI/                      # Spatial UI components
+│   ├── Networking/              # Multiplayer (if applicable)
+│   └── Gameplay/                # Application-specific features
+├── Shaders/                     # Custom shaders (URP, XR-compatible)
+├── Prefabs/                     # Reusable prefabs
+├── Data/                        # Configuration data (ScriptableObjects, JSON)
+├── Tests/                       # Unity Test Framework tests
+│   ├── EditMode/                # Pure logic tests
+│   └── PlayMode/                # MonoBehaviour and XR tests
+└── Prototypes/                  # Isolated prototype experiments
 ```
 
 > **Architecture note:** The SDK is installed as a UPM package, not part of Assets/Scripts.

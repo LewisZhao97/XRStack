@@ -48,7 +48,7 @@ Harness engineering is cybernetics applied to AI-assisted development. The patte
 Goal State + Sensor + Actuator + Feedback Loop = Control System
 ```
 
-- **Without a goal**, the agent generates blindly (no `CLAUDE.md` / `AGENTS.md` = no conventions)
+- **Without a goal**, the agent generates blindly (no `CLAUDE.md` / rules = no conventions)
 - **Without sensors**, it doesn't know it's wrong (no hooks = no validation)
 - **Without actuators**, it can't fix what it finds (no agents = no specialist correction)
 - **Without feedback**, it repeats the same mistakes forever (no rules = no learning)
@@ -80,14 +80,12 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
-- [Workflow Hierarchy](#workflow-hierarchy)
-- [Agents (29)](#agents-29)
+- [Working Agents (29)](#working-agents-29)
 - [Slash Commands (27)](#slash-commands-27)
 - [Rules (25)](#rules-25)
 - [Hooks (8)](#hooks-8)
 - [Design Philosophy](#design-philosophy)
 - [Customization](#customization)
-- [Requirements](#requirements)
 - [License](#license)
 
 ## What's Included
@@ -108,7 +106,7 @@ The engineer's role shifts from writing code to **designing the control system**
 - Bash (Git Bash on Windows works)
 - Unity 6.x project (tested with 6000.0.27f1)
 - [Git](https://git-scm.com/)
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)  CLI installed(`irm https://claude.ai/install.ps1 | iex`)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed (`irm https://claude.ai/install.ps1 | iex`)
 - **Recommended**: 
   - [jq](https://jqlang.github.io/jq/) (for hook validation)
   - Python 3 (for JSON validation)
@@ -131,30 +129,39 @@ mklink /D .claude ClaudeWorkflow\.claude
 # On macOS/Linux:
 # ln -s ClaudeWorkflow/.claude .claude
 
-# 3. Copy CLAUDE.md to project root (customize for your project)
+# 3. Optional
+# Copy CLAUDE.md as a starting template (customize for your project)
 cp ClaudeWorkflow/CLAUDE.md ./CLAUDE.md
 
 # 4. Add to .gitignore
 echo ".claude" >> .gitignore
+echo "docs/unity" >> .gitignore
 
 # 5. Launch Claude Code
 claude
+
+# 6. Run /init to customize CLAUDE.md for your project or create from scratch
+/init
+
+# 7. Run /start to let Claude Code to detect your project state
+/start
 ```
 
-Updating the workflow later:
+`/start` detects your project state and routes you to the right workflow.
 
-```bash
-cd ClaudeWorkflow && git pull origin main && cd ..
-git add ClaudeWorkflow
-git commit -m "chore: update Claude workflow"
-```
+> **Note:** The `CLAUDE.md` in this repo is written for developing this workflow itself.
+> Copy it as a starting template, then customize it for your project via `/init` or manually.
 
 ### Option B — Direct Copy (simple, no upstream updates)
 
 ```bash
 cp -r ClaudeWorkflow/.claude YourUnityProject/.claude
-cp -r ClaudeWorkflow/docs YourUnityProject/docs
+
+# template — customize for your project
 cp ClaudeWorkflow/CLAUDE.md YourUnityProject/CLAUDE.md
+
+# Optional: copy Unity API reference docs
+cp -r ClaudeWorkflow/docs YourUnityProject/docs
 ```
 
 ## Project Structure
@@ -172,7 +179,7 @@ ClaudeWorkflow/
 │   │   └── csharp/             # 6 rules (loaded for *.cs files only)
 │   ├── hooks/                  # 8 lifecycle shell scripts
 │   └── docs/                   # Internal reference docs
-├── CLAUDE.md                   # Project instructions template
+├── CLAUDE.md                   # Template — copy to your project root and customize
 └── README.md
 ```
 
@@ -235,7 +242,7 @@ You type a message
 
 **Hooks** are shell scripts triggered by lifecycle events. `validate-commit.sh` runs before every `git commit` to check for hardcoded values and JSON validity. `session-start.sh` loads branch context when you start a session.
 
-## Workflow Hierarchy （29 Agents）
+## Working Agents (29)
 
 The workflow is organized in three tiers, from strategic to tactical:
 
@@ -455,7 +462,7 @@ You are the [Role] for a Unity XR project. [Core responsibilities...]
 
 Available models: `opus` (deepest reasoning), `sonnet` (best coding), `haiku` (fast/cheap).
 
-### Adding a Slash Command （Skill）
+### Adding a Slash Command (Skill)
 
 Create a directory in `.claude/skills/` with a `SKILL.md`:
 
