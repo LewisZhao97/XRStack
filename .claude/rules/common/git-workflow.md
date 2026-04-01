@@ -7,8 +7,6 @@
 <optional body>
 ```
 
-Note: Attribution disabled globally via ~/.claude/settings.json.
-
 ### Commit Types
 
 | Type | Purpose | Example |

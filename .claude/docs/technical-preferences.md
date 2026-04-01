@@ -1,48 +1,59 @@
 # Technical Preferences
 
-<!-- Populated by /setup-engine. Updated as the user makes decisions throughout development. -->
-<!-- All agents reference this file for project-specific standards and conventions. -->
-
 ## Engine & Language
 
-- **Engine**: [TO BE CONFIGURED — run /setup-engine]
-- **Language**: [TO BE CONFIGURED]
-- **Rendering**: [TO BE CONFIGURED]
-- **Physics**: [TO BE CONFIGURED]
+- **Engine**: Unity 6.0.27f1
+- **Language**: C# (Unity app), C++/Java (native OpenXR runtime)
+- **Render Pipeline**: URP (Universal Render Pipeline)
+- **Rendering**: Single Pass Instanced (mandatory for XR)
+- **XR Framework**: XR Interaction Toolkit (XRI)
+- **XR Runtime**: Self-developed OpenXR runtime (native `.aar`)
+- **SDK**: Self-developed XR SDK (UPM package)
 
-## Naming Conventions
+## Naming Conventions (Unity Style)
 
-- **Classes**: [TO BE CONFIGURED]
-- **Variables**: [TO BE CONFIGURED]
-- **Signals/Events**: [TO BE CONFIGURED]
-- **Files**: [TO BE CONFIGURED]
-- **Scenes/Prefabs**: [TO BE CONFIGURED]
-- **Constants**: [TO BE CONFIGURED]
+- **Classes/Structs**: PascalCase (`ARTrackedImageManager`)
+- **Interfaces**: `I` + PascalCase (`IReferenceImageLibrary`)
+- **Constants**: `k_` + PascalCase (`k_MaxRetries`)
+- **Static fields**: `s_` + PascalCase (`s_Instance`)
+- **Instance private fields**: `m_` + PascalCase (`m_Camera`)
+- **Properties/Events**: camelCase (`referenceLibrary`, `trackablesChanged`)
+- **Methods**: PascalCase (`TryGetRenderingParameters()`)
+- **Parameters/Locals**: camelCase (`commandBuffer`)
 
 ## Performance Budgets
 
-- **Target Framerate**: [TO BE CONFIGURED]
-- **Frame Budget**: [TO BE CONFIGURED]
-- **Draw Calls**: [TO BE CONFIGURED]
-- **Memory Ceiling**: [TO BE CONFIGURED]
+| Metric | XR Glasses (standalone) | PC Streaming |
+|--------|------------------------|--------------|
+| Frame time | 11ms (90Hz) | 11ms (90Hz) |
+| Draw calls | < 100 | < 300 |
+| Triangles | < 750K | < 2M |
+| Texture memory | < 1GB | < 4GB |
+| GC Alloc/frame | 0 bytes | 0 bytes |
 
 ## Testing
 
-- **Framework**: [TO BE CONFIGURED]
-- **Minimum Coverage**: [TO BE CONFIGURED]
-- **Required Tests**: Balance formulas, gameplay systems, networking (if applicable)
+- **Framework**: Unity Test Framework (NUnit-based)
+- **Minimum Coverage**: 80% for core logic and SDK public API
+- **Required Tests**: Edit Mode (pure logic), Play Mode (XR interactions via `XRDeviceSimulator`)
+- **Naming**: `[MethodUnderTest]_[Scenario]_[ExpectedResult]`
 
-## Forbidden Patterns
+## Forbidden Patterns (Hot Paths)
 
-<!-- Add patterns that should never appear in this project's codebase -->
-- [None configured yet — add as architectural decisions are made]
+- `GetComponent<>()` in Update — cache in Awake
+- `Find()`, `FindObjectOfType()`, `SendMessage()`
+- String concatenation, LINQ, closures (GC allocation)
+- `new List<>()`, `new Dictionary<>()` — pre-allocate and reuse
+- `Physics.Raycast()` (allocating variant) — use NonAlloc
+- Moving camera programmatically without user control (motion sickness)
 
-## Allowed Libraries / Addons
+## Allowed Libraries / Packages
 
-<!-- Add approved third-party dependencies here -->
-- [None configured yet — add as dependencies are approved]
+- Unity XR Interaction Toolkit (XRI)
+- Self-developed XR SDK (UPM)
+- UniTask (if available, for async/await)
+- Unity Test Framework
 
 ## Architecture Decisions Log
 
-<!-- Quick reference linking to full ADRs in docs/architecture/ -->
-- [No ADRs yet — use /architecture-decision to create one]
+- Use `/architecture-decision` to create new ADRs

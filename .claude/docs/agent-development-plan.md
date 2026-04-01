@@ -65,7 +65,7 @@
 
 ---
 
-## 3. Skills / Slash Commands (26 active)
+## 3. Skills / Slash Commands (27 active)
 
 ### XR-Specific Skills (3)
 - [x] `/xr-test` — XR interaction, locomotion, comfort test generation
@@ -179,11 +179,11 @@
 
 ---
 
-## 6. Commands (1 active)
+## 6. Commands (0 active — migrated to skills)
 
-- [x] `/plan` — Implementation planning with XR context
+- [x] `/plan` — Migrated from command to skill (`.claude/skills/plan/`)
 
-### Potential Future Commands
+### Potential Future Skills
 - [ ] `/tdd` — Test-driven development guided workflow
 - [ ] `/build-fix` — Automated build error resolution
 - [ ] `/refactor` — Guided refactoring with safety checks
@@ -210,13 +210,14 @@
 - [x] `CLAUDE-local-template.md` — Local CLAUDE.md template
 
 ### Docs Needing Update
-- [ ] Update `agent-roster.md` to reflect current 29 agents
-- [ ] Update `agent-coordination-map.md` with XR agent hierarchy
-- [ ] Update `directory-structure.md` to match Unity project layout
-- [ ] Update `quick-start.md` for Unity XR onboarding
-- [ ] Update `skills-reference.md` with current 26 skills
-- [ ] Update `rules-reference.md` with current 25 rules and correct paths
-- [ ] Populate `technical-preferences.md` with Unity 6.0.27f1 specifics
+- [x] Update `agent-roster.md` to reflect current 29 agents
+- [x] Update `agent-coordination-map.md` with XR agent hierarchy
+- [x] ~~Update `directory-structure.md`~~ — Deleted (covered by CLAUDE.md)
+- [x] Update `quick-start.md` for Unity XR onboarding
+- [x] Update `skills-reference.md` with current 27 skills
+- [x] Update `rules-reference.md` with current 25 rules and correct paths
+- [x] Populate `technical-preferences.md` with Unity 6.0.27f1 specifics
+- [x] ~~`coding-standards.md`~~ — Deleted (covered by rules/)
 
 ### Potential New Docs
 - [ ] `xr-architecture.md` — XR subsystem architecture diagram and data flow
