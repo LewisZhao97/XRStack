@@ -61,7 +61,7 @@ Three tiers of agents, from strategic to tactical:
 | `/tech-debt` | Scan and prioritize technical debt |
 | `/release-checklist` | Pre-release validation |
 
-See `skills-reference.md` for the full list of 27 commands.
+See `skills-reference.md` for the full list of 29 commands.
 
 ### 4. Follow the Coordination Rules
 

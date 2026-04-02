@@ -1,6 +1,6 @@
 # Agent Roster
 
-29 specialist agents organized into three tiers. Each has a definition file in `.claude/agents/`.
+30 specialist agents organized into three tiers. Each has a definition file in `.claude/agents/`.
 
 ## Tier 1 — Directors (Opus)
 
@@ -19,6 +19,11 @@
 | `release-manager` | Release pipeline | Versioning, certification, deployment |
 
 ## Tier 3 — Specialists (Sonnet / Haiku)
+
+### Design
+| Agent | Domain | When to Use |
+|-------|--------|-------------|
+| `game-designer` | Game mechanics | Gamification, core loops, spatial puzzles, player experience |
 
 ### XR Specialists
 

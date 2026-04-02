@@ -1,6 +1,6 @@
 # Available Skills (Slash Commands)
 
-27 slash commands available via `/command-name`.
+29 slash commands available via `/command-name`.
 
 ## XR-Specific
 
@@ -21,6 +21,8 @@
 | `/prototype` | Rapid prototyping with relaxed standards |
 | `/reverse-document` | Generate design/architecture docs from existing code |
 | `/bug-report` | Structured bug report creation |
+| `/design-review` | Review game design docs for completeness and implementability |
+| `/brainstorm` | Guided concept ideation from zero to structured design |
 
 ## Production
 

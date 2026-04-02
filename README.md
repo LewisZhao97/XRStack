@@ -3,14 +3,14 @@
   <p align="center">
     A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> workflow for Unity XR development.
     <br />
-    Drop it into any Unity project and get 29 specialist agents, 27 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR development.
+    Drop it into any Unity project and get 30 specialist agents, 29 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR development.
   </p>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-29-blueviolet" alt="29 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-27-green" alt="27 Skills"></a>
+  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-30-blueviolet" alt="30 Agents"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-29-green" alt="29 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8-darkcyan" alt="8 Hooks"></a>
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
   <a href=".claude/mcps"><img src="https://img.shields.io/badge/mcps-under_construction-steelblue" alt="coming.."></a>
@@ -80,8 +80,8 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
-- [Working Agents (29)](#working-agents-29)
-- [Slash Commands (27)](#slash-commands-27)
+- [Working Agents (30)](#working-agents-30)
+- [Slash Commands (29)](#slash-commands-29)
 - [Rules (25)](#rules-25)
 - [Hooks (8)](#hooks-8)
 - [Design Philosophy](#design-philosophy)
@@ -92,12 +92,23 @@ The engineer's role shifts from writing code to **designing the control system**
 
 | Component | Count | Purpose |
 |-----------|-------|---------|
-| **Agents** | 29 | Specialist sub-agents with domain expertise |
-| **Skills** | 27 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
+| **Agents** | 30 | Specialist sub-agents with domain expertise |
+| **Skills** | 29 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
 | **Rules** | 25 | Auto-loaded coding standards and constraints |
 | **Hooks** | 8 | Lifecycle automation (session start, commit validation, ...) |
 | **CLAUDE.md** | 1 | Project-wide instructions loaded every conversation |
 | **settings.json** | 1 | Permissions, hook wiring, safety deny-list |
+
+## Documentations
+
+- [Agent Roster](.claude/docs/agent-roster.md) — 30 agents, tier hierarchy, delegation map
+- [Skills Reference](.claude/docs/skills-reference.md) — 29 slash commands by category
+- [Rules Reference](.claude/docs/rules-reference.md) — 25 auto-loaded rules by path
+- [Hooks Reference](.claude/docs/hooks-reference.md) — 8 lifecycle hooks
+- [Quick Start](.claude/docs/quick-start.md) — Onboarding paths for new users
+- [Agent Coordination Map](.claude/docs/agent-coordination-map.md) — Workflow patterns and delegation rules
+- [Review Workflow](.claude/docs/review-workflow.md) — Code review routing
+- [Technical Preferences](.claude/docs/technical-preferences.md) — Engine, framework, and tooling details
 
 ## Quick Start
 
@@ -240,7 +251,7 @@ You type a message
 
 **Hooks** are shell scripts triggered by lifecycle events. `validate-commit.sh` runs before every `git commit` to check for hardcoded values and JSON validity. `session-start.sh` loads branch context when you start a session.
 
-## Working Agents (29)
+## Working Agents (30)
 
 The workflow is organized in three tiers, from strategic to tactical:
 
@@ -275,6 +286,7 @@ Domain experts who execute specific work. Use Sonnet or Haiku model.
 | **Programming** | `gameplay-programmer`, `network-programmer`, `tools-programmer`, `ui-programmer` |
 | **Art & Tech Art** | `technical-artist` |
 | **Quality** | `qa-tester`, `security-engineer`, `accessibility-specialist`, `performance-analyst` |
+| **Design** | `game-designer` |
 | **Production** | `analytics-engineer`, `localization-lead`, `ux-designer`, `devops-engineer`, `prototyper` |
 
 ### Engine Specialists
@@ -302,7 +314,7 @@ xr-specialist (authority)
 └── sdk-developer                 # SDK public API, versioning, UPM
 ```
 
-## Slash Commands (27)
+## Slash Commands (29)
 
 ### XR-Specific
 | Command | Purpose |
@@ -321,6 +333,8 @@ xr-specialist (authority)
 | `/prototype` | Rapid prototyping with relaxed standards |
 | `/reverse-document` | Generate design docs from existing code |
 | `/bug-report` | Structured bug report creation |
+| `/design-review` | Review game design docs for completeness and implementability |
+| `/brainstorm` | Guided concept ideation from zero to structured design |
 
 ### Production
 | Command | Purpose |

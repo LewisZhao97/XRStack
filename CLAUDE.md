@@ -115,7 +115,7 @@ This file is a guidebook, not an encyclopedia. The details live in:
 
 - **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — auto-loaded coding standards, XR constraints, testing, security
 - **Skills** (`.claude/skills/`) — slash commands for planning, review, profiling, release
-- **Agents** (`.claude/agents/`) — 29 specialist agents routed automatically by domain
+- **Agents** (`.claude/agents/`) — 30 specialist agents routed automatically by domain
 - **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references
 
 Run `/start-harness` if this is your first session. It detects your project state, ensures this file is harness-compliant, and routes you.
