@@ -15,7 +15,7 @@ When this skill is invoked:
 2. **Read the previous sprint** (if any) from `production/sprints/` to
    understand velocity and carryover.
 
-3. **Scan design documents** in `design/gdd/` for features tagged as ready
+3. **Scan design documents** in `Assets/App docs/` for features tagged as ready
    for implementation.
 
 4. **Check the risk register** at `production/risk-register/`.

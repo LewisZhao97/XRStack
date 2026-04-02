@@ -44,8 +44,8 @@ The project progresses through these stages:
 ### Gate: Concept → Systems Design
 
 **Required Artifacts:**
-- [ ] `design/gdd/game-concept.md` exists and has content
-- [ ] Game pillars defined (in concept doc or `design/gdd/game-pillars.md`)
+- [ ] `Assets/App docs/game-concept.md` exists and has content
+- [ ] Game pillars defined (in concept doc or `Assets/App docs/game-pillars.md`)
 
 **Quality Checks:**
 - [ ] Game concept has been reviewed (`/design-review` verdict not MAJOR REVISION NEEDED)
@@ -57,8 +57,8 @@ The project progresses through these stages:
 ### Gate: Systems Design → Technical Setup
 
 **Required Artifacts:**
-- [ ] Systems index exists at `design/gdd/systems-index.md` with at least MVP systems enumerated
-- [ ] At least 1 GDD in `design/gdd/` (beyond game-concept.md and systems-index.md)
+- [ ] Systems index exists at `Assets/App docs/systems-index.md` with at least MVP systems enumerated
+- [ ] At least 1 GDD in `Assets/App docs/` (beyond game-concept.md and systems-index.md)
 
 **Quality Checks:**
 - [ ] GDD(s) pass design review (8 required sections present)
@@ -99,7 +99,7 @@ The project progresses through these stages:
 
 **Required Artifacts:**
 - [ ] `src/` has active code organized into subsystems
-- [ ] All core mechanics from GDD are implemented (cross-reference `design/gdd/` with `src/`)
+- [ ] All core mechanics from GDD are implemented (cross-reference `Assets/App docs/` with `src/`)
 - [ ] Main gameplay path is playable end-to-end
 - [ ] Test files exist in `tests/`
 - [ ] At least 1 playtest report (or `/playtest-report` has been run)
@@ -153,7 +153,7 @@ For each item in the target gate:
 - For localization checks: `Grep` for hardcoded strings in `src/`
 
 ### Cross-Reference Checks
-- Compare `design/gdd/` documents against `src/` implementations
+- Compare `Assets/App docs/` documents against `src/` implementations
 - Check that every system referenced in architecture docs has corresponding code
 - Verify sprint plans reference real work items
 
@@ -180,7 +180,7 @@ For items that can't be automatically verified, **ask the user**:
 **Checked by**: gate-check skill
 
 ### Required Artifacts: [X/Y present]
-- [x] design/gdd/game-concept.md — exists, 2.4KB
+- [x] Assets/App docs/game-concept.md — exists, 2.4KB
 - [ ] docs/architecture/ — MISSING (no ADRs found)
 - [x] production/sprints/ — exists, 1 sprint plan
 

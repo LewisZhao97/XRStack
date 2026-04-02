@@ -14,7 +14,7 @@ When this skill is invoked:
 2. **Read CLAUDE.md** for project context: tech stack, coding standards,
    architectural patterns, and any estimation guidelines.
 
-3. **Read relevant design documents** from `design/gdd/` if the task relates
+3. **Read relevant design documents** from `Assets/App docs/` if the task relates
    to a documented feature or system.
 
 4. **Scan the codebase** to understand the systems affected by this task:

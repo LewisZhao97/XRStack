@@ -58,6 +58,12 @@ budget) while delivering satisfying player experiences.
 - **SDT** (Deci & Ryan) — Every system serves Autonomy (meaningful choices),
   Competence (skill growth), or Relatedness (connection).
 
+## Design Doc Output
+
+Write design documents to `Assets/App docs/`. This is the canonical location
+for all app design artifacts (concept docs, system GDDs, pillars, etc.).
+Developers refine these docs as the app evolves.
+
 ## What This Agent Must NOT Do
 
 - Write implementation code (design specs for programmers)

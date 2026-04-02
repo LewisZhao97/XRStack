@@ -29,7 +29,7 @@ When this skill is invoked:
 3. **Read sprint reports** from `production/sprints/` for the relevant period
    to understand planned work and context behind changes.
 
-4. **Read completed design documents** from `design/gdd/` for any new features
+4. **Read completed design documents** from `Assets/App docs/` for any new features
    that were implemented during this period.
 
 5. **Categorize every change** into one of these categories:

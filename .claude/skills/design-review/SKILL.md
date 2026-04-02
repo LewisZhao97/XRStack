@@ -13,7 +13,7 @@ When this skill is invoked:
 2. **Read the master CLAUDE.md** to understand project context and standards.
 
 3. **Read related design documents** referenced or implied by the target doc
-   (check `design/gdd/` for related systems).
+   (check `Assets/App docs/` for related systems).
 
 4. **Evaluate against the Design Document Standard checklist**:
    - [ ] Has Overview section (one-paragraph summary)
@@ -65,7 +65,7 @@ When this skill is invoked:
 
 9. **Contextual next step recommendations**:
    - If the document being reviewed is `game-concept.md` or `game-pillars.md`:
-     - Check if `design/gdd/systems-index.md` exists
+     - Check if `Assets/App docs/systems-index.md` exists
      - If it does NOT exist, add to Recommendations:
        > "This concept is ready for systems decomposition. Run `/map-systems`
        > to break it down into individual systems with dependencies and priorities,

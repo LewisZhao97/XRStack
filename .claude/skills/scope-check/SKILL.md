@@ -10,7 +10,7 @@ context: |
 When this skill is invoked:
 
 1. **Read the original plan** — Find the relevant document:
-   - If a feature name: read the design doc from `design/gdd/`
+   - If a feature name: read the design doc from `Assets/App docs/`
    - If a sprint number: read the sprint plan from `production/sprints/`
    - If a milestone: read the milestone definition from `production/milestones/`
 

@@ -7,38 +7,10 @@ Context is the most critical resource in a Claude Code session. Manage it active
 **The file is the memory, not the conversation.** Conversations are ephemeral and
 will be compacted or lost. Files on disk persist across compactions and session crashes.
 
-### Session State File
+### Key Principle
 
-Maintain `production/session-state/active.md` as a living checkpoint. Update it
-after each significant milestone:
-
-- Design section approved and written to file
-- Architecture decision made
-- Implementation milestone reached
-- Test results obtained
-
-The state file should contain: current task, progress checklist, key decisions
-made, files being worked on, and open questions.
-
-### Status Line Block (Production+ only)
-
-When the project is in Production, Polish, or Release stage, include a structured
-status block in `active.md` that the status line script can parse:
-
-```markdown
-<!-- STATUS -->
-Epic: Combat System
-Feature: Melee Combat
-Task: Implement hitbox detection
-<!-- /STATUS -->
-```
-
-- All three fields (Epic, Feature, Task) are optional — include only what applies
-- Update this block when switching focus areas
-- The status line displays it as a breadcrumb: `Combat System > Melee Combat > Hitboxes`
-- Remove or empty the block when no active work focus exists
-
-After any disruption (compaction, crash, `/clear`), read the state file first.
+After any disruption (compaction, crash, `/clear`), re-read the files you were
+working on. The files contain the decisions; the conversation history is secondary.
 
 ### Incremental File Writing
 
@@ -83,7 +55,6 @@ Subagents run in their own context window and return only summaries:
 
 When context is compacted, preserve the following in the summary:
 
-- Reference to `production/session-state/active.md` (read it to recover state)
 - List of files modified in this session and their purpose
 - Any architectural decisions made and their rationale
 - Active sprint tasks and their current status
@@ -93,15 +64,12 @@ When context is compacted, preserve the following in the summary:
 - The current task and what step we are on
 - Which sections of the current document are written to file vs. still in progress
 
-**After compaction:** Read `production/session-state/active.md` and any files being
-actively worked on to recover full context. The files contain the decisions; the
-conversation history is secondary.
+**After compaction:** Re-read files being actively worked on to recover full context.
 
 ## Recovery After Session Crash
 
-If a session dies ("prompt too long") or you start a new session to continue work:
+If a session dies or you start a new session to continue work:
 
-1. The `session-start.sh` hook will detect and preview `active.md` automatically
-2. Read the full state file for context
-3. Read the partially-completed file(s) listed in the state
-4. Continue from the next incomplete section or task
+1. The `session-start.sh` hook shows branch, recent commits, and project context
+2. Re-read the files you were working on
+3. Continue from the next incomplete step

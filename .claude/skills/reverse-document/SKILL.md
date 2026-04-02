@@ -122,7 +122,7 @@ Based on type, use appropriate template:
 
 | Type | Template | Output Path |
 |------|----------|-------------|
-| `design` | `templates/design-doc-from-implementation.md` | `design/gdd/[system-name].md` |
+| `design` | `templates/design-doc-from-implementation.md` | `Assets/App docs/[system-name].md` |
 | `architecture` | `templates/architecture-doc-from-code.md` | `docs/architecture/[decision-name].md` |
 | `concept` | `templates/concept-doc-from-prototype.md` | `prototypes/[name]/CONCEPT.md` or `design/concepts/[name].md` |
 
@@ -149,7 +149,7 @@ SECTIONS MARKED AS INCOMPLETE:
 - "Enemy AI interaction with stagger" (not fully implemented yet)
 - "Weapon variety and scaling" (only sword implemented so far)
 
-May I write this to design/gdd/combat-system.md?
+May I write this to Assets/App docs/combat-system.md?
 ```
 
 Wait for approval. User may request changes before writing.
@@ -180,7 +180,7 @@ verified-by: [User name]
 After writing, suggest next steps:
 
 ```
-✅ Written to design/gdd/combat-system.md
+✅ Written to Assets/App docs/combat-system.md
 
 FOLLOW-UP RECOMMENDED:
 1. Run /balance-check on combat formulas (exponential scaling concern)
@@ -230,11 +230,11 @@ User: 1. Stamina is for pacing, prevent button mashing
 Agent: Perfect, that clarifies the vision. Let me draft the design doc.
        [Shows draft with clarified intent]
 
-       May I write this to design/gdd/combat-system.md?
+       May I write this to Assets/App docs/combat-system.md?
 
 User: Yes, write it.
 
-Agent: ✅ Written to design/gdd/combat-system.md
+Agent: ✅ Written to Assets/App docs/combat-system.md
        ✅ Marked as [REVERSE-DOCUMENTED]
        ✅ Flagged damage scaling for rebalancing
 

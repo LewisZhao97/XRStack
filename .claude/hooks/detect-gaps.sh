@@ -27,7 +27,7 @@ fi
 if [ "$FRESH_PROJECT" = true ]; then
   echo ""
   echo "NEW PROJECT: No Unity project detected."
-  echo "   Run: /start to begin setup"
+  echo "   Run: /start-harness to begin setup"
   echo ""
   echo "To get a comprehensive project analysis, run: /project-stage-detect"
   echo "==================================="
