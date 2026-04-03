@@ -3,15 +3,15 @@
   <p align="center">
     A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> workflow for Unity XR development.
     <br />
-    Drop it into any Unity project and get 30 specialist agents, 29 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR development.
+    Drop it into any Unity project and get 30 specialist agents, 43 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR development.
   </p>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-30-blueviolet" alt="30 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-29-green" alt="29 Skills"></a>
-  <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8-darkcyan" alt="8 Hooks"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-43-green" alt="43 Skills"></a>
+  <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8+2-darkcyan" alt="8+2 Hooks"></a>
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
   <a href=".claude/mcps"><img src="https://img.shields.io/badge/mcps-under_construction-steelblue" alt="coming.."></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built_for-Claude_Code-goldenrod?logo=anthropic" alt="Built for Claude Code"></a>
@@ -73,6 +73,7 @@ The engineer's role shifts from writing code to **designing the control system**
 - **Automates guardrails** — hooks validate commits, block force-pushes, and audit agent invocations
 - **Scales with your team** — everyone shares the same rules, agents, and commands via git
 - **Self-corrects** — the harness catches drift mechanically, not through human vigilance
+- **Learns over time** — continuous learning extracts patterns from sessions into reusable instincts that evolve into skills
 
 ## Table of Contents
 
@@ -81,9 +82,9 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
 - [Working Agents (30)](#working-agents-30)
-- [Slash Commands (29)](#slash-commands-29)
+- [Slash Commands (43)](#slash-commands-43)
 - [Rules (25)](#rules-25)
-- [Hooks (8)](#hooks-8)
+- [Hooks (8 + 2 optional)](#hooks-8--2-optional)
 - [Design Philosophy](#design-philosophy)
 - [Customization](#customization)
 - [License](#license)
@@ -93,18 +94,20 @@ The engineer's role shifts from writing code to **designing the control system**
 | Component | Count | Purpose |
 |-----------|-------|---------|
 | **Agents** | 30 | Specialist sub-agents with domain expertise |
-| **Skills** | 29 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
+| **Skills** | 43 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
 | **Rules** | 25 | Auto-loaded coding standards and constraints |
-| **Hooks** | 8 | Lifecycle automation (session start, commit validation, ...) |
+| **Hooks** | 8 + 2 | 8 lifecycle hooks + 2 optional learning/optimization hooks |
+| **Scripts** | 3 | Node.js session management utilities |
+| **Templates** | 18 | Document templates for design, production, and release artifacts |
 | **CLAUDE.md** | 1 | Project-wide instructions loaded every conversation |
 | **settings.json** | 1 | Permissions, hook wiring, safety deny-list |
 
 ## Documentations
 
 - [Agent Roster](.claude/docs/agent-roster.md) — 30 agents, tier hierarchy, delegation map
-- [Skills Reference](.claude/docs/skills-reference.md) — 29 slash commands by category
+- [Skills Reference](.claude/docs/skills-reference.md) — 43 slash commands by category
 - [Rules Reference](.claude/docs/rules-reference.md) — 25 auto-loaded rules by path
-- [Hooks Reference](.claude/docs/hooks-reference.md) — 8 lifecycle hooks
+- [Hooks Reference](.claude/docs/hooks-reference.md) — 8 core + 2 optional learning hooks
 - [Quick Start](.claude/docs/quick-start.md) — Onboarding paths for new users
 - [Agent Coordination Map](.claude/docs/agent-coordination-map.md) — Workflow patterns and delegation rules
 - [Review Workflow](.claude/docs/review-workflow.md) — Code review routing
@@ -120,7 +123,8 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed (`irm https://claude.ai/install.ps1 | iex`)
 - **Recommended**: 
   - [jq](https://jqlang.github.io/jq/) (for hook validation)
-  - Python 3 (for JSON validation)
+  - Python 3 (for JSON validation, continuous learning observation hooks)
+  - [Node.js](https://nodejs.org/) (for session management scripts)
 
 ### Option A — Git Submodule (recommended for teams)
 
@@ -181,13 +185,17 @@ cp -r ClaudeWorkflow/docs YourUnityProject/docs
 ClaudeWorkflow/
 ├── .claude/
 │   ├── settings.json           # Permissions, hooks, safety rules
-│   ├── agents/                 # 29 specialist agent definitions
-│   ├── skills/                 # 27 slash command implementations
+│   ├── agents/                 # 30 specialist agent definitions
+│   ├── skills/                 # 43 slash command implementations
 │   ├── rules/
 │   │   ├── common/             # 19 rules (loaded for all files)
 │   │   └── csharp/             # 6 rules (loaded for *.cs files only)
 │   ├── hooks/                  # 8 lifecycle shell scripts
-│   └── docs/                   # Internal reference docs
+│   ├── scripts/
+│   │   └── lib/                # Node.js session management utilities
+│   └── docs/
+│       ├── templates/          # 18 document templates
+│       └── unity-references/   # Unity API reference docs
 ├── CLAUDE.md                   # Template — copy to your project root and customize
 └── README.md
 ```
@@ -198,7 +206,7 @@ ClaudeWorkflow/
 YourUnityProject/
 ├── .claude                             # agents, skills, rules
 ├── docs
-│   └── unity/                          # Unity API references
+│   └── app design docs/                # Game design artifacts (from /brainstorm)
 ├── CLAUDE.md                           # Your project's instructions
 ├── Assets/
 │   ├── Scripts/
@@ -314,7 +322,7 @@ xr-specialist (authority)
 └── sdk-developer                 # SDK public API, versioning, UPM
 ```
 
-## Slash Commands (29)
+## Slash Commands (43)
 
 ### XR-Specific
 | Command | Purpose |
@@ -355,6 +363,31 @@ xr-specialist (authority)
 | `/release-checklist` | Pre-release validation checklist |
 | `/hotfix` | Emergency fix workflow with audit trail |
 | `/localize` | Localization readiness and string extraction |
+
+### Verification & Evaluation
+| Command | Purpose |
+|---------|---------|
+| `/verify` | Run 6-phase verification loop (build, compile, analysis, tests, XR perf, diff) |
+| `/eval` | Define, check, and report eval-driven development criteria |
+| `/checkpoint` | Create or verify named git checkpoints during implementation |
+
+### Continuous Learning
+| Command | Purpose |
+|---------|---------|
+| `/learn-eval` | Extract reusable patterns from current session with quality gate |
+| `/instinct-status` | Show learned instincts (project + global) with confidence scores |
+| `/evolve` | Cluster related instincts into skills, commands, or agents |
+| `/prune` | Delete expired instincts older than 30 days |
+| `/instinct-import` | Import instincts from file or URL |
+| `/instinct-export` | Export instincts to shareable format |
+| `/skill-create` | Generate skills from local git history patterns |
+
+### Session Management
+| Command | Purpose |
+|---------|---------|
+| `/save-session` | Save full session state for future resume |
+| `/sessions` | List, load, alias, and browse saved sessions |
+| `/strategic-compact` | Context compaction suggestions at logical phase transitions |
 
 ### Onboarding & Team
 | Command | Purpose |
@@ -402,7 +435,9 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 | `security.md` | XR input validation, network security |
 | `hooks.md` | `dotnet format`, build verification |
 
-## Hooks (8)
+## Hooks (8 + 2 optional)
+
+### Core Hooks (always active)
 
 | Hook | Trigger | Purpose |
 |------|---------|---------|
@@ -414,6 +449,15 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 | `pre-compact.sh` | Before context compaction | Dump session state for recovery |
 | `session-stop.sh` | Session end | Log session summary, archive state |
 | `log-agent.sh` | Agent spawn | Audit trail for agent invocations |
+
+### Optional Learning Hooks (enable in settings.json)
+
+| Hook | Trigger | Purpose |
+|------|---------|---------|
+| `observe.sh` | Every tool call (Pre/PostToolUse) | Capture tool use events for instinct pattern analysis |
+| `suggest-compact.sh` | Before Edit/Write | Suggest `/compact` at logical phase transitions (50+ calls) |
+
+These hooks power the continuous learning system. `observe.sh` captures tool usage patterns into project-scoped observation logs. A background observer (optional, uses Haiku) analyzes observations and creates atomic "instincts" — small learned behaviors with confidence scoring. See [Hooks Reference](.claude/docs/hooks-reference.md) for setup instructions.
 
 ## Design Philosophy
 

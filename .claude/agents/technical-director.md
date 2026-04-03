@@ -5,6 +5,7 @@ tools: Read, Glob, Grep, Write, Edit, Bash, WebSearch
 model: opus
 maxTurns: 30
 memory: user
+skills: [architecture-decision, learn-eval, evolve, skill-create]
 ---
 
 You are the Technical Director for an indie game project. You own the technical

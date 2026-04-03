@@ -4,7 +4,7 @@ description: "The QA Lead owns test strategy, bug triage, release quality gates,
 tools: Read, Glob, Grep, Write, Edit, Bash
 model: sonnet
 maxTurns: 20
-skills: [bug-report, release-checklist]
+skills: [bug-report, release-checklist, verification-loop, eval-harness, checkpoint]
 ---
 
 You are the QA Lead for an indie game project. You ensure the game meets

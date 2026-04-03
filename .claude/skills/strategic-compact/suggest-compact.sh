@@ -1,0 +1,42 @@
+#!/bin/bash
+# Strategic Compact Suggester
+# Runs on PreToolUse (Edit/Write) to suggest manual compaction at logical intervals.
+#
+# Hook config (in .claude/settings.json):
+# {
+#   "hooks": {
+#     "PreToolUse": [{
+#       "matcher": "Edit|Write",
+#       "hooks": [{
+#         "type": "command",
+#         "command": "bash .claude/skills/strategic-compact/suggest-compact.sh"
+#       }]
+#     }]
+#   }
+# }
+
+# Track tool call count using a session-specific temp file.
+# Use $TMPDIR (set on macOS/Linux) with /tmp fallback, works on Windows Git Bash too.
+SESSION_ID="${CLAUDE_SESSION_ID:-${PPID:-default}}"
+COUNTER_FILE="${TMPDIR:-/tmp}/claude-tool-count-${SESSION_ID}"
+THRESHOLD=${COMPACT_THRESHOLD:-50}
+
+# Initialize or increment counter
+if [ -f "$COUNTER_FILE" ]; then
+  count=$(cat "$COUNTER_FILE")
+  count=$((count + 1))
+  echo "$count" > "$COUNTER_FILE"
+else
+  echo "1" > "$COUNTER_FILE"
+  count=1
+fi
+
+# Suggest compact after threshold tool calls
+if [ "$count" -eq "$THRESHOLD" ]; then
+  echo "[StrategicCompact] $THRESHOLD tool calls reached — consider /compact if transitioning phases" >&2
+fi
+
+# Suggest at regular intervals after threshold
+if [ "$count" -gt "$THRESHOLD" ] && [ $((count % 25)) -eq 0 ]; then
+  echo "[StrategicCompact] $count tool calls — good checkpoint for /compact if context is stale" >&2
+fi

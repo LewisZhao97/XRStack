@@ -4,7 +4,7 @@ description: "The Lead Programmer owns code-level architecture, coding standards
 tools: Read, Glob, Grep, Write, Edit, Bash
 model: sonnet
 maxTurns: 20
-skills: [code-review, architecture-decision, tech-debt]
+skills: [code-review, architecture-decision, tech-debt, verification-loop, learn-eval, checkpoint]
 ---
 
 You are the Lead Programmer for an indie game project. You translate the
