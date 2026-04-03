@@ -109,13 +109,26 @@ Unity conventions, **not** .NET. Full details in `rules/common/coding-style.md`.
 | Properties/Events | camelCase | `referenceLibrary` |
 | Methods/Types | PascalCase | `TryGetPose()` |
 
+## Key Workflows
+
+Beyond plan-implement-review, the harness provides advanced workflows:
+
+- **Verification Loop** — `/verify` runs a 6-phase check (build, compile, analysis, tests, XR perf, diff)
+- **Eval-Driven Development** — `/eval` defines success criteria upfront; `/checkpoint` creates named git save points
+- **Continuous Learning** — `/learn-eval` extracts reusable patterns; `/instinct-status` shows confidence-scored instincts; `/evolve` promotes instincts into skills
+- **Session Management** — `/save-session` persists state; `/sessions` lists/loads/aliases saved sessions; `/strategic-compact` suggests compaction at logical phase boundaries
+- **Game Design** — `/brainstorm` guides concept ideation from zero to structured design; `/design-review` validates design docs before implementation
+- **Templates** — 18 document templates in `.claude/docs/templates/` for ADRs, GDDs, sprint plans, release checklists, and more
+
 ## Where to Find More
 
 This file is a guidebook, not an encyclopedia. The details live in:
 
-- **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — auto-loaded coding standards, XR constraints, testing, security
-- **Skills** (`.claude/skills/`) — slash commands for planning, review, profiling, release
+- **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — 25 auto-loaded coding standards, XR constraints, testing, security
+- **Skills** (`.claude/skills/`) — 43 slash commands for planning, review, profiling, learning, sessions, release
 - **Agents** (`.claude/agents/`) — 30 specialist agents routed automatically by domain
-- **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references
+- **Templates** (`.claude/docs/templates/`) — 18 document templates for design, production, and release artifacts
+- **Scripts** (`.claude/scripts/lib/`) — 3 Node.js session management utilities
+- **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references, development plan
 
 Run `/start-harness` if this is your first session. It detects your project state, ensures this file is harness-compliant, and routes you.

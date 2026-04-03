@@ -16,7 +16,7 @@
 
 ---
 
-## 2. Agents (29 active)
+## 2. Agents (30 active)
 
 ### XR-Specific Agents (5)
 - [x] `xr-specialist` — XR interaction, tracking, spatial UI authority
@@ -32,7 +32,7 @@
 - [x] `unity-dots-specialist` — ECS, Jobs, Burst compiler
 - [x] `unity-addressables-specialist` — Asset loading, bundles, memory
 
-### Development Agents (10)
+### Development Agents (11)
 - [x] `lead-programmer` — Code architecture, code review
 - [x] `gameplay-programmer` — Feature/interaction implementation
 - [x] `technical-director` — High-level technical decisions
@@ -43,6 +43,7 @@
 - [x] `network-programmer` — Multiplayer networking
 - [x] `devops-engineer` — CI/CD, build automation
 - [x] `prototyper` — Rapid prototyping
+- [x] `game-designer` — Game element design, interaction mechanics, engagement systems
 
 ### Quality, Release & Support Agents (9)
 - [x] `qa-lead` — Test strategy, quality gates
@@ -65,14 +66,14 @@
 
 ---
 
-## 3. Skills / Slash Commands (27 active)
+## 3. Skills / Slash Commands (43 active)
 
 ### XR-Specific Skills (3)
 - [x] `/xr-test` — XR interaction, locomotion, comfort test generation
 - [x] `/build-platform` — Build validation (XR glasses, PC streaming)
 - [x] `/xr-perf-profile` — XR frame budget analysis (72/90/120Hz)
 
-### Development Skills (7)
+### Development Skills (9)
 - [x] `/plan` — Implementation planning with confirmation gate
 - [x] `/code-review` — Architectural and quality review
 - [x] `/perf-profile` — General performance profiling
@@ -80,6 +81,8 @@
 - [x] `/prototype` — Rapid prototyping workflow
 - [x] `/reverse-document` — Generate docs from existing code
 - [x] `/bug-report` — Structured bug report creation
+- [x] `/design-review` — Review game design docs for completeness and implementability
+- [x] `/brainstorm` — Guided concept ideation from zero to structured design
 
 ### Production Skills (7)
 - [x] `/sprint-plan` — Sprint planning
@@ -97,12 +100,31 @@
 - [x] `/hotfix` — Emergency fix workflow
 - [x] `/localize` — Localization workflow
 
-### Onboarding & Team Skills (4)
-- [x] `/start` — Project onboarding and routing
-- [x] `/onboard` — New contributor onboarding
-- [x] `/team-ui` — UI team orchestration
-- [x] `/team-release` — Release team orchestration
-- [x] `/project-stage-detect` — Auto-detect project stage
+### Verification & Evaluation Skills (3)
+- [x] `/verify` — Run 6-phase verification loop (build, compile, analysis, tests, XR perf, diff)
+- [x] `/eval` — Define, check, and report eval-driven development criteria
+- [x] `/checkpoint` — Create or verify named git checkpoints during implementation
+
+### Continuous Learning Skills (7)
+- [x] `/learn-eval` — Extract reusable patterns from current session with quality gate
+- [x] `/instinct-status` — Show learned instincts with confidence scores
+- [x] `/evolve` — Cluster related instincts into skills, commands, or agents
+- [x] `/prune` — Delete expired instincts older than 30 days
+- [x] `/instinct-import` — Import instincts from file or URL
+- [x] `/instinct-export` — Export instincts to shareable format
+- [x] `/skill-create` — Generate skills from local git history patterns
+
+### Session Management Skills (3)
+- [x] `/save-session` — Save full session state for future resume
+- [x] `/sessions` — List, load, alias, and browse saved sessions
+- [x] `/strategic-compact` — Context compaction suggestions at logical phase transitions
+
+### Onboarding & Team Skills (6)
+- [x] `/start-harness` — Discover project, ensure CLAUDE.md harness compliance, route to workflow
+- [x] `/onboard` — Generate onboarding doc for a new contributor
+- [x] `/team-ui` — Orchestrate UX designer + UI programmer + art review
+- [x] `/team-release` — Orchestrate release manager + QA + DevOps + producer
+- [x] `/project-stage-detect` — Auto-detect project stage and recommend next steps
 
 ### Potential Future Skills
 - [ ] `/xr-comfort-check` — Validate comfort settings (vignette, locomotion, snap turn)
@@ -159,8 +181,9 @@
 
 ---
 
-## 5. Hooks (8 active)
+## 5. Hooks (8 active + 2 optional)
 
+### Core Hooks (8)
 - [x] `session-start.sh` — Load Unity XR project context (branch, Unity version, XR packages)
 - [x] `detect-gaps.sh` — Detect missing docs, tests, XR packages at session start
 - [x] `validate-commit.sh` — Pre-commit: JSON validation, hardcoded values, TODO format
@@ -169,6 +192,10 @@
 - [x] `pre-compact.sh` — Pre-compact: dump session state for recovery
 - [x] `session-stop.sh` — Stop: log session summary, archive state
 - [x] `log-agent.sh` — SubagentStart: audit trail for agent invocations
+
+### Optional Learning Hooks (2, configured in settings.json)
+- [x] `observe.sh` — Every tool call (Pre/PostToolUse): capture tool use events for instinct pattern analysis
+- [x] `suggest-compact.sh` — Before Edit/Write: suggest `/compact` at logical phase transitions (50+ calls)
 
 ### Potential Future Hooks
 - [ ] `validate-asmdef.sh` — Verify assembly definition consistency after script moves
@@ -179,45 +206,54 @@
 
 ---
 
-## 6. Commands (0 active — migrated to skills)
+## 6. Templates (18 active)
 
-- [x] `/plan` — Migrated from command to skill (`.claude/skills/plan/`)
-
-### Potential Future Skills
-- [ ] `/tdd` — Test-driven development guided workflow
-- [ ] `/build-fix` — Automated build error resolution
-- [ ] `/refactor` — Guided refactoring with safety checks
+- [x] `architecture-decision-record.md` — ADR template
+- [x] `architecture-doc-from-code.md` — Architecture doc reverse-engineered from code
+- [x] `changelog-template.md` — Changelog format template
+- [x] `concept-doc-from-prototype.md` — Concept doc extracted from prototype
+- [x] `design-doc-from-implementation.md` — Design doc reverse-engineered from implementation
+- [x] `game-concept.md` — Game concept document template
+- [x] `game-design-document.md` — Full GDD template
+- [x] `game-pillars.md` — Game pillars template
+- [x] `milestone-definition.md` — Milestone definition template
+- [x] `post-mortem.md` — Post-mortem template
+- [x] `project-stage-report.md` — Project stage analysis report template
+- [x] `release-checklist-template.md` — Release checklist template
+- [x] `release-notes.md` — Release notes template
+- [x] `risk-register-entry.md` — Risk register entry template
+- [x] `sprint-plan.md` — Sprint plan template
+- [x] `systems-index.md` — Systems index template
+- [x] `technical-design-document.md` — Technical design document template
+- [x] `test-plan.md` — Test plan template
 
 ---
 
-## 7. Documentation (.claude/docs/)
+## 7. Scripts (3 active)
 
-### Existing (carried from template, needs review)
+- [x] `scripts/lib/session-manager.js` — Session state persistence and retrieval
+- [x] `scripts/lib/session-aliases.js` — Session alias management
+- [x] `scripts/lib/utils.js` — Shared utility functions
+
+---
+
+## 8. Documentation (.claude/docs/)
+
+### Existing
 - [x] `agent-coordination-map.md` — Agent hierarchy and delegation
-- [x] `agent-roster.md` — Complete agent listing (needs update for XR agents)
-- [x] `coding-standards.md` — Code requirements (needs Unity XR alignment)
+- [x] `agent-development-plan.md` — This file: workflow roadmap and tracking
+- [x] `agent-roster.md` — Complete agent listing with 30 agents
 - [x] `context-management.md` — Context window strategy
 - [x] `coordination-rules.md` — Agent coordination principles
-- [x] `directory-structure.md` — Project layout (needs Unity alignment)
 - [x] `hooks-reference.md` — Hook configuration reference
-- [x] `quick-start.md` — Onboarding guide (needs Unity XR rewrite)
+- [x] `quick-start.md` — Onboarding guide
 - [x] `review-workflow.md` — Review hierarchy
 - [x] `rules-reference.md` — Rule enforcement table
 - [x] `settings-local-template.md` — Local settings template
 - [x] `setup-requirements.md` — Prerequisites
-- [x] `skills-reference.md` — Slash command reference (needs update)
-- [x] `technical-preferences.md` — Engine/language config template
+- [x] `skills-reference.md` — Slash command reference
+- [x] `technical-preferences.md` — Engine/language config
 - [x] `CLAUDE-local-template.md` — Local CLAUDE.md template
-
-### Docs Needing Update
-- [x] Update `agent-roster.md` to reflect current 29 agents
-- [x] Update `agent-coordination-map.md` with XR agent hierarchy
-- [x] ~~Update `directory-structure.md`~~ — Deleted (covered by CLAUDE.md)
-- [x] Update `quick-start.md` for Unity XR onboarding
-- [x] Update `skills-reference.md` with current 27 skills
-- [x] Update `rules-reference.md` with current 25 rules and correct paths
-- [x] Populate `technical-preferences.md` with Unity 6.0.27f1 specifics
-- [x] ~~`coding-standards.md`~~ — Deleted (covered by rules/)
 
 ### Potential New Docs
 - [ ] `xr-architecture.md` — XR subsystem architecture diagram and data flow
@@ -228,7 +264,7 @@
 
 ---
 
-## 8. Removed Content
+## 9. Removed Content
 
 The following were removed as irrelevant to Unity XR development:
 
@@ -240,10 +276,10 @@ The following were removed as irrelevant to Unity XR development:
 
 ---
 
-## 9. Priority Roadmap
+## 10. Priority Roadmap
 
-### Phase 1 — Immediate (docs alignment)
-Update existing `.claude/docs/` to match the restructured workflow. Fix stale references to removed agents/skills.
+### Phase 1 — Complete ✅
+Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows.
 
 ### Phase 2 — Near-term (XR depth)
 Add `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills. Add `openxr-runtime.md` and `sdk-api.md` rules. Add `.meta` file and `.asmdef` validation hooks.
