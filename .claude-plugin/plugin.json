@@ -20,7 +20,36 @@
     "claude-code"
   ],
   "agents": [
-    "./.claude/agents/accessibility-specialist.md"
+    "./.claude/agents/accessibility-specialist.md",
+    "./.claude/agents/analytics-engineer.md",
+    "./.claude/agents/devops-engineer.md",
+    "./.claude/agents/game-designer.md",
+    "./.claude/agents/gameplay-programmer.md",
+    "./.claude/agents/lead-programmer.md",
+    "./.claude/agents/localization-lead.md",
+    "./.claude/agents/network-programmer.md",
+    "./.claude/agents/openxr-runtime-specialist.md",
+    "./.claude/agents/performance-analyst.md",
+    "./.claude/agents/platform-specialist.md",
+    "./.claude/agents/producer.md",
+    "./.claude/agents/prototyper.md",
+    "./.claude/agents/qa-lead.md",
+    "./.claude/agents/qa-tester.md",
+    "./.claude/agents/release-manager.md",
+    "./.claude/agents/sdk-developer.md",
+    "./.claude/agents/security-engineer.md",
+    "./.claude/agents/technical-artist.md",
+    "./.claude/agents/technical-director.md",
+    "./.claude/agents/tools-programmer.md",
+    "./.claude/agents/ui-programmer.md",
+    "./.claude/agents/unity-addressables-specialist.md",
+    "./.claude/agents/unity-dots-specialist.md",
+    "./.claude/agents/unity-shader-specialist.md",
+    "./.claude/agents/unity-specialist.md",
+    "./.claude/agents/unity-ui-specialist.md",
+    "./.claude/agents/unity-xri-specialist.md",
+    "./.claude/agents/ux-designer.md",
+    "./.claude/agents/xr-specialist.md"
   ],
   "skills": [
     "./.claude/skills/"
