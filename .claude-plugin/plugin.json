@@ -18,5 +18,7 @@
     "engineering",
     "tools",
     "claude-code"
-  ]
+  ],
+  "agents": ["./.claude/agents/"],
+  "skills": ["./.claude/skills/"]
 }
