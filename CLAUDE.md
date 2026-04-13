@@ -57,6 +57,7 @@ Follow this sequence for every task. Do not skip steps.
 - Write tests first (RED → GREEN → REFACTOR). Target 80%+ coverage for core logic.
 - Use `/xr-test` for XR-specific test generation.
 - Zero GC allocations in hot paths — this is non-negotiable in XR.
+- **Define verifiable success criteria upfront.** Transform vague tasks into goals you can loop against: "Add validation" → "Write tests for invalid inputs, then make them pass." Strong criteria let you self-verify; weak ones ("make it work") force the user to re-clarify after mistakes.
 
 ### 4. Review and Validate
 
@@ -133,3 +134,36 @@ This file is a guidebook, not an encyclopedia. The details live in:
 - **Docs** (`.claude/docs/`) — agent roster, coordination map, workflow references, development plan
 
 Run `/start-harness` if this is your first session. It detects your project state, ensures this file is harness-compliant, and routes you.
+
+
+## Behavioral Guidelines
+
+Cross-cutting principles that apply at every step of the workflow above. They bias toward caution over speed — for trivial tasks, use judgment.
+
+### Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+### Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it — don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: every changed line should trace directly to the user's request.
