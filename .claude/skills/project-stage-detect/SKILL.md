@@ -56,7 +56,7 @@ Analyze project structure and content:
 ### 2. Classify Project Stage
 
 Based on scanned artifacts, determine stage. Check `docs/production/stage.txt` first —
-if it exists, use its value (explicit override from `/gate-check`). Otherwise,
+if it exists, use its value (explicit override from `/milestone-gate`). Otherwise,
 auto-detect using these heuristics (check from most-advanced backward):
 
 | Stage | Indicators |
@@ -66,8 +66,8 @@ auto-detect using these heuristics (check from most-advanced backward):
 | **Technical Setup** | Systems index exists, engine not configured |
 | **Pre-Production** | Engine configured, `Assets/Scripts/` has <10 source files |
 | **Production** | `Assets/Scripts/` has 10+ source files, active development |
-| **Polish** | Explicit only (set by `/gate-check` Production → Polish gate) |
-| **Release** | Explicit only (set by `/gate-check` Polish → Release gate) |
+| **Polish** | Explicit only (set by `/milestone-gate` Production → Polish gate) |
+| **Release** | Explicit only (set by `/milestone-gate` Polish → Release gate) |
 
 ### 3. Collaborative Gap Identification
 
@@ -173,7 +173,7 @@ After generating the report, suggest relevant next steps:
 - **Missing architecture docs?** → `/architecture-decision` or `/reverse-document architecture`
 - **Prototypes need documentation?** → `/reverse-document concept prototypes/[name]`
 - **No sprint plan?** → `/sprint-plan`
-- **Approaching milestone?** → `/milestone-review`
+- **Approaching milestone?** → `/milestone-gate`
 
 ---
 

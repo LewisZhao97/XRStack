@@ -66,17 +66,16 @@
 
 ---
 
-## 3. Skills / Slash Commands (43 active)
+## 3. Skills / Slash Commands (30 active)
 
 ### XR-Specific Skills (3)
 - [x] `/xr-test` — XR interaction, locomotion, comfort test generation
 - [x] `/build-platform` — Build validation (XR glasses, PC streaming)
 - [x] `/xr-perf-profile` — XR frame budget analysis (72/90/120Hz)
 
-### Development Skills (9)
+### Development Skills (8)
 - [x] `/plan` — Implementation planning with confirmation gate
 - [x] `/code-review` — Architectural and quality review
-- [x] `/perf-profile` — General performance profiling
 - [x] `/architecture-decision` — ADR creation
 - [x] `/prototype` — Rapid prototyping workflow
 - [x] `/reverse-document` — Generate docs from existing code
@@ -84,46 +83,34 @@
 - [x] `/design-review` — Review game design docs for completeness and implementability
 - [x] `/brainstorm` — Guided concept ideation from zero to structured design
 
-### Production Skills (7)
+### Production Skills (3)
 - [x] `/sprint-plan` — Sprint planning
-- [x] `/estimate` — Task effort estimation
-- [x] `/scope-check` — Scope creep detection
-- [x] `/milestone-review` — Milestone progress review
-- [x] `/gate-check` — Phase readiness validation
+- [x] `/milestone-gate` — Milestone/phase readiness (artifacts, quality, go/no-go verdict)
 - [x] `/retrospective` — Sprint/milestone retrospective
 - [x] `/changelog` — Changelog generation from git
 
-### Quality & Release Skills (5)
+### Quality & Release Skills (2)
 - [x] `/tech-debt` — Technical debt tracking
 - [x] `/asset-audit` — Asset compliance audit
-- [x] `/release-checklist` — Pre-release validation
-- [x] `/hotfix` — Emergency fix workflow
-- [x] `/localize` — Localization workflow
 
 ### Verification & Evaluation Skills (3)
 - [x] `/verify` — Run 6-phase verification loop (build, compile, analysis, tests, XR perf, diff)
 - [x] `/eval` — Define, check, and report eval-driven development criteria
 - [x] `/checkpoint` — Create or verify named git checkpoints during implementation
 
-### Continuous Learning Skills (7)
+### Continuous Learning Skills (3)
 - [x] `/learn-eval` — Extract reusable patterns from current session with quality gate
 - [x] `/instinct-status` — Show learned instincts with confidence scores
 - [x] `/evolve` — Cluster related instincts into skills, commands, or agents
-- [x] `/prune` — Delete expired instincts older than 30 days
-- [x] `/instinct-import` — Import instincts from file or URL
-- [x] `/instinct-export` — Export instincts to shareable format
-- [x] `/skill-create` — Generate skills from local git history patterns
 
-### Session Management Skills (3)
+### Session Management Skills (2)
 - [x] `/save-session` — Save full session state for future resume
 - [x] `/sessions` — List, load, alias, and browse saved sessions
-- [x] `/strategic-compact` — Context compaction suggestions at logical phase transitions
 
-### Onboarding & Team Skills (6)
+### Onboarding & Team Skills (4)
 - [x] `/start-harness` — Discover project, ensure CLAUDE.md harness compliance, route to workflow
 - [x] `/onboard` — Generate onboarding doc for a new contributor
 - [x] `/team-ui` — Orchestrate UX designer + UI programmer + art review
-- [x] `/team-release` — Orchestrate release manager + QA + DevOps + producer
 - [x] `/project-stage-detect` — Auto-detect project stage and recommend next steps
 
 ### Potential Future Skills
@@ -295,7 +282,7 @@ The following were removed as irrelevant to Unity XR development:
 ## 11. Priority Roadmap
 
 ### Phase 1 — Complete ✅
-Foundation, all 30 agents, 43 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, 5 MCP servers (GitHub, Context7, Exa, Figma, Unity MCP), session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows. Claude Code plugin format (`.claude-plugin/plugin.json` + `marketplace.json`) for distribution.
+Foundation, all 30 agents, 30 skills, 25 rules, 8+2 hooks, 18 templates, 3 scripts, 5 MCP servers (GitHub, Context7, Exa, Figma, Unity MCP), session management, continuous learning system, verification loop, eval harness, brainstorm/design-review workflows. Claude Code plugin format (`.claude-plugin/plugin.json` + `marketplace.json`) for distribution.
 
 ### Phase 2 — Near-term (XR depth)
 Add `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills. Add `openxr-runtime.md` and `sdk-api.md` rules. Add `.meta` file and `.asmdef` validation hooks.

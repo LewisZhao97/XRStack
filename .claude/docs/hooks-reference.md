@@ -36,14 +36,6 @@ Add to `.claude/settings.json` under `hooks`:
         "matcher": "*",
         "hooks": [{ "type": "command", "command": "bash .claude/skills/continuous-learning-v2/hooks/observe.sh pre" }]
       },
-      {
-        "matcher": "Edit",
-        "hooks": [{ "type": "command", "command": "bash .claude/skills/strategic-compact/suggest-compact.sh" }]
-      },
-      {
-        "matcher": "Write",
-        "hooks": [{ "type": "command", "command": "bash .claude/skills/strategic-compact/suggest-compact.sh" }]
-      }
     ],
     "PostToolUse": [
       {

@@ -1,6 +1,8 @@
 # XRStack Harness Test Plan
 
-> **Purpose**: Systematically test all harness components (43 skills, 31 agents, 25 rules, 8 hooks, 18 templates) using a single empty Unity project and one continuous scenario.
+> **⚠️ OUT OF DATE**: This plan was written against the 43-skill inventory. The skill set has since been trimmed to 31 (see [skills-reference.md](skills-reference.md)). Test cases for removed skills — `/perf-profile`, `/estimate`, `/scope-check`, `/milestone-review`, `/gate-check`, `/hotfix`, `/localize`, `/prune`, `/instinct-import`, `/instinct-export`, `/skill-create`, `/strategic-compact`, `/team-release`, `/release-checklist` — should be skipped or replaced with `/milestone-gate` where applicable.
+>
+> **Purpose**: Systematically test all harness components (30 skills, 30 agents, 25 rules, 8 hooks, 18 templates) using a single empty Unity project and one continuous scenario.
 >
 > **Scenario**: Build a simple "XR Object Grabber" — a minimal XR app where the user grabs and throws cubes. Small enough to complete, complex enough to exercise the full harness.
 >

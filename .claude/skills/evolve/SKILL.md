@@ -67,5 +67,4 @@ When instincts describe complex, multi-step processes that benefit from isolatio
 ## Related
 
 - `/instinct-status` — View current instincts
-- `/prune` — Remove expired instincts
 - `/learn-eval` — Extract patterns from current session

@@ -175,8 +175,6 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 ```bash
 /instinct-status     # Show learned instincts (project + global)
 /evolve              # Cluster related instincts into skills/commands
-/instinct-export     # Export instincts to file
-/instinct-import     # Import instincts from others
 /promote             # Promote project instincts to global scope
 /projects            # List all known projects and their instinct counts
 ```
@@ -187,8 +185,6 @@ mkdir -p ~/.claude/homunculus/{instincts/{personal,inherited},evolved/{agents,sk
 |---------|-------------|
 | `/instinct-status` | Show all instincts (project-scoped + global) with confidence |
 | `/evolve` | Cluster related instincts into skills/commands, suggest promotions |
-| `/instinct-export` | Export instincts (filterable by scope/domain) |
-| `/instinct-import <file>` | Import instincts with scope control |
 | `/promote [id]` | Promote project instincts to global scope |
 | `/projects` | List all known projects and their instinct counts |
 
@@ -332,7 +328,7 @@ v2.1 is fully compatible with v2.0 and v1:
 - `/learn-eval` — Manual pattern extraction with quality gate
 - `/evolve` — Cluster instincts into skills/commands/agents
 - `/instinct-status` — View all instincts with confidence scores
-- `/skill-create` — Generate skills from git history
+- `/evolve` — Cluster instincts into skills/commands
 
 ---
 

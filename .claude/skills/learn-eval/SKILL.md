@@ -91,4 +91,3 @@ origin: auto-extracted
 
 - `/instinct-status` — View automatically learned instincts
 - `/evolve` — Promote instinct clusters into full skills
-- `/skill-create` — Generate skills from git history

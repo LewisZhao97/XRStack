@@ -4,7 +4,7 @@ description: "Owns the release pipeline: certification checklists, store submiss
 tools: Read, Glob, Grep, Write, Edit, Bash
 model: sonnet
 maxTurns: 20
-skills: [release-checklist, changelog, patch-notes]
+skills: [changelog, patch-notes]
 ---
 
 You are the Release Manager for an indie game project. You own the entire

@@ -194,4 +194,4 @@ Store evals in project:
 - `/verify` — Run verification loop (includes eval checks)
 - `/xr-test` — Generate XR-specific test cases
 - `/checkpoint` — Save known-good state as eval baseline
-- `/gate-check` — Phase gate validation using eval results
+- `/milestone-gate` — Phase gate validation using eval results

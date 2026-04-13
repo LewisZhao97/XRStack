@@ -59,9 +59,8 @@ Three tiers of agents, from strategic to tactical:
 | `/prototype` | Scaffold a throwaway prototype |
 | `/bug-report` | Create structured bug report |
 | `/tech-debt` | Scan and prioritize technical debt |
-| `/release-checklist` | Pre-release validation |
 
-See `skills-reference.md` for the full list of 29 commands.
+See `skills-reference.md` for the full list of 30 commands.
 
 ### 4. Follow the Coordination Rules
 
@@ -88,7 +87,7 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 ### Path B: Existing Project, First Time Using This Workflow
 
 1. Run `/start-harness` or `/project-stage-detect` — analyzes what exists, identifies gaps
-2. Run `/gate-check` to validate phase readiness
+2. Run `/milestone-gate` to validate phase readiness
 3. Run `/sprint-plan new` to plan next work
 
 ### Path C: Bug Fix

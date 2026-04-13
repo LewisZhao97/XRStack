@@ -1,6 +1,6 @@
 # Available Skills (Slash Commands)
 
-29 slash commands available via `/command-name`.
+30 slash commands available via `/command-name`.
 
 ## XR-Specific
 
@@ -16,7 +16,6 @@
 |---------|---------|
 | `/plan` | Create implementation plan — waits for confirmation before coding |
 | `/code-review` | Architectural and quality code review |
-| `/perf-profile` | General performance profiling and bottleneck identification |
 | `/architecture-decision` | Create an Architecture Decision Record (ADR) |
 | `/prototype` | Rapid prototyping with relaxed standards |
 | `/reverse-document` | Generate design/architecture docs from existing code |
@@ -29,10 +28,7 @@
 | Command | Purpose |
 |---------|---------|
 | `/sprint-plan` | Generate or update a sprint plan |
-| `/estimate` | Task effort estimation with complexity and risk breakdown |
-| `/scope-check` | Detect scope creep against original plan |
-| `/milestone-review` | Milestone progress review and go/no-go assessment |
-| `/gate-check` | Phase readiness validation (PASS/CONCERNS/FAIL) |
+| `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
 | `/retrospective` | Sprint or milestone retrospective |
 | `/changelog` | Auto-generate changelog from git history |
 
@@ -42,9 +38,29 @@
 |---------|---------|
 | `/tech-debt` | Track, categorize, and prioritize technical debt |
 | `/asset-audit` | Asset naming, size, and format compliance |
-| `/release-checklist` | Pre-release validation checklist |
-| `/hotfix` | Emergency fix workflow with audit trail |
-| `/localize` | Localization readiness, string extraction, validation |
+
+## Verification & Evaluation
+
+| Command | Purpose |
+|---------|---------|
+| `/verify` | Run 6-phase verification loop (build, compile, analysis, tests, XR perf, diff) |
+| `/eval` | Define, check, and report eval-driven development criteria |
+| `/checkpoint` | Create or verify named git checkpoints during implementation |
+
+## Continuous Learning
+
+| Command | Purpose |
+|---------|---------|
+| `/learn-eval` | Extract reusable patterns from current session with quality gate |
+| `/instinct-status` | Show learned instincts (project + global) with confidence scores |
+| `/evolve` | Cluster related instincts into skills, commands, or agents |
+
+## Session Management
+
+| Command | Purpose |
+|---------|---------|
+| `/save-session` | Save full session state for future resume |
+| `/sessions` | List, load, alias, and browse saved sessions |
 
 ## Onboarding & Team
 
@@ -54,4 +70,3 @@
 | `/onboard` | Generate onboarding doc for a new contributor or role |
 | `/project-stage-detect` | Auto-detect project stage, identify gaps, recommend next steps |
 | `/team-ui` | Orchestrate UX designer + UI programmer + art review |
-| `/team-release` | Orchestrate release manager + QA + DevOps + producer |

@@ -129,7 +129,7 @@ qa-t = qa-tester               shader = unity-shader-specialist
 
 ```
 1. producer            — Declares release candidate
-2. release-manager     — Cuts release branch, runs /release-checklist
+2. release-manager     — Cuts release branch, prepares release artifacts
 3. qa-lead             — Full regression, signs off on quality
 4. performance-analyst — Confirms performance within budgets
 5. devops-engineer     — Builds release artifacts

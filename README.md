@@ -3,14 +3,14 @@
   <p align="center">
     A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> harness for Unity XR development.
     <br />
-    30 specialist agents, 43 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
+    30 specialist agents, 30 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
   </p>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-30-blueviolet" alt="30 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-43-green" alt="43 Skills"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-30-green" alt="30 Skills"></a>
   <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8+2-darkcyan" alt="8+2 Hooks"></a>
   <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
   <a href=".mcp.json"><img src="https://img.shields.io/badge/mcps-5-steelblue" alt="5 MCPs"></a>
@@ -83,7 +83,7 @@ The engineer's role shifts from writing code to **designing the control system**
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
 - [Working Agents (30)](#working-agents-30)
-- [Slash Commands (43)](#slash-commands-43)
+- [Slash Commands (30)](#slash-commands-31)
 - [Rules (25)](#rules-25)
 - [Hooks (8 + 2 optional)](#hooks-8--2-optional)
 - [MCP Servers (5)](#mcp-servers-5)
@@ -96,7 +96,7 @@ The engineer's role shifts from writing code to **designing the control system**
 | Component | Count | Purpose |
 |-----------|-------|---------|
 | **Agents** | 30 | Specialist sub-agents with domain expertise |
-| **Skills** | 43 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
+| **Skills** | 30 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
 | **Rules** | 25 | Auto-loaded coding standards and constraints |
 | **Hooks** | 8 + 2 | 8 lifecycle hooks + 2 optional learning/optimization hooks |
 | **Scripts** | 3 | Node.js session management utilities |
@@ -108,7 +108,7 @@ The engineer's role shifts from writing code to **designing the control system**
 ## Documentations
 
 - [Agent Roster](.claude/docs/agent-roster.md) — 30 agents, tier hierarchy, delegation map
-- [Skills Reference](.claude/docs/skills-reference.md) — 43 slash commands by category
+- [Skills Reference](.claude/docs/skills-reference.md) — 30 slash commands by category
 - [Rules Reference](.claude/docs/rules-reference.md) — 25 auto-loaded rules by path
 - [Hooks Reference](.claude/docs/hooks-reference.md) — 8 core + 2 optional learning hooks
 - [Quick Start](.claude/docs/quick-start.md) — Onboarding paths for new users
@@ -225,7 +225,7 @@ XRStack/
 ├── .claude/
 │   ├── settings.json           # Permissions, hooks, safety rules
 │   ├── agents/                 # 30 specialist agent definitions
-│   ├── skills/                 # 43 slash command implementations
+│   ├── skills/                 # 30 slash command implementations
 │   ├── rules/
 │   │   ├── common/             # 19 rules (loaded for all files)
 │   │   └── csharp/             # 6 rules (loaded for *.cs files only)
@@ -362,7 +362,7 @@ xr-specialist (authority)
 └── sdk-developer                 # SDK public API, versioning, UPM
 ```
 
-## Slash Commands (43)
+## Slash Commands (30)
 
 ### XR-Specific
 | Command | Purpose |
@@ -376,7 +376,6 @@ xr-specialist (authority)
 |---------|---------|
 | `/plan` | Create implementation plan (waits for confirmation before coding) |
 | `/code-review` | Architectural and quality code review |
-| `/perf-profile` | General performance profiling |
 | `/architecture-decision` | Create an Architecture Decision Record |
 | `/prototype` | Rapid prototyping with relaxed standards |
 | `/reverse-document` | Generate design docs from existing code |
@@ -388,10 +387,7 @@ xr-specialist (authority)
 | Command | Purpose |
 |---------|---------|
 | `/sprint-plan` | Plan or update a sprint |
-| `/estimate` | Task effort estimation with confidence levels |
-| `/scope-check` | Detect scope creep against original plan |
-| `/milestone-review` | Milestone progress and go/no-go assessment |
-| `/gate-check` | Phase readiness validation |
+| `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
 | `/retrospective` | Sprint or milestone retrospective |
 | `/changelog` | Generate changelog from git history |
 
@@ -400,9 +396,6 @@ xr-specialist (authority)
 |---------|---------|
 | `/tech-debt` | Track and prioritize technical debt |
 | `/asset-audit` | Asset naming, size, and format compliance |
-| `/release-checklist` | Pre-release validation checklist |
-| `/hotfix` | Emergency fix workflow with audit trail |
-| `/localize` | Localization readiness and string extraction |
 
 ### Verification & Evaluation
 | Command | Purpose |
@@ -417,17 +410,12 @@ xr-specialist (authority)
 | `/learn-eval` | Extract reusable patterns from current session with quality gate |
 | `/instinct-status` | Show learned instincts (project + global) with confidence scores |
 | `/evolve` | Cluster related instincts into skills, commands, or agents |
-| `/prune` | Delete expired instincts older than 30 days |
-| `/instinct-import` | Import instincts from file or URL |
-| `/instinct-export` | Export instincts to shareable format |
-| `/skill-create` | Generate skills from local git history patterns |
 
 ### Session Management
 | Command | Purpose |
 |---------|---------|
 | `/save-session` | Save full session state for future resume |
 | `/sessions` | List, load, alias, and browse saved sessions |
-| `/strategic-compact` | Context compaction suggestions at logical phase transitions |
 
 ### Onboarding & Team
 | Command | Purpose |
@@ -435,7 +423,6 @@ xr-specialist (authority)
 | `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
 | `/onboard` | Generate onboarding doc for a new contributor |
 | `/team-ui` | Orchestrate UX designer + UI programmer + art review |
-| `/team-release` | Orchestrate release manager + QA + DevOps + producer |
 | `/project-stage-detect` | Auto-detect project stage and recommend next steps |
 
 ## Rules (25)

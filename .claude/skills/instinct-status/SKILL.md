@@ -53,5 +53,4 @@ python3 .claude/skills/continuous-learning-v2/scripts/instinct-cli.py status
 ## Related
 
 - `/evolve` — Cluster instincts into skills/commands/agents
-- `/prune` — Remove expired instincts
-- `/instinct-export` — Share instincts with team
+- `/learn-eval` — Extract patterns from current session
