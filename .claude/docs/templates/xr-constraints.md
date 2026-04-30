@@ -207,5 +207,84 @@ these before brainstorm Phase 7 architecture commits.]
 
 ---
 
+## Appendix: Typical Values by Device Class
+
+Generic guidance for filling in this template. These are *category-level*
+patterns, not facts about any specific device — verify against your actual
+hardware and SDK before relying on them.
+
+### AR Glasses (optical see-through)
+
+| Field | Typical |
+| ---- | ---- |
+| Display | Optical see-through; cannot render true black; additive blending |
+| FOV | 30–50° horizontal |
+| Refresh rate | 60–75 Hz primary, sometimes 90 Hz on newer models |
+| Frame budget | 11–17 ms |
+| Compute class | Standalone (mobile-class chip) or PC-tethered |
+| Tracking | 3DoF (rotation only) or 6DoF on higher-end models |
+| Form factor | Stationary, seated or standing |
+| Input | Hands-only; rarely controllers |
+| Session profile | 5–15 min typical, fatigue-driven |
+| Art direction | Bright, high-saturation, emissive-friendly stylized — no dark scenes |
+
+### Passthrough / Camera-MR Headsets
+
+| Field | Typical |
+| ---- | ---- |
+| Display | Camera-composited; opaque visuals possible; FOV-limited passthrough |
+| FOV | 90–110° |
+| Refresh rate | 72–120 Hz |
+| Frame budget | 8–13 ms |
+| Compute class | Standalone (mobile-class chip) |
+| Tracking | 6DoF, room-scale capable |
+| Input | Controllers + hand tracking |
+| Session profile | 20–45 min |
+| Art direction | Full palette; passthrough latency may shift colour balance |
+
+### Immersive VR
+
+| Field | Typical |
+| ---- | ---- |
+| Display | Fully opaque; full colour gamut |
+| FOV | 100–110° |
+| Refresh rate | 72–144 Hz |
+| Frame budget | 7–13 ms standalone, more on tethered |
+| Compute class | Standalone or PC-tethered |
+| Tracking | 6DoF, room-scale |
+| Input | Controllers (primary), optional hand tracking |
+| Session profile | 30–90 min |
+| Art direction | Full palette; motion-sickness ceilings on camera movement |
+
+### Hand-tracking SDK patterns (any class)
+
+- **Per-joint pose** (typically 25+ joints per hand) vs **recognized-gesture
+  only** (a fixed enum of detected gestures). Per-joint is more flexible;
+  gesture-only is simpler and more reliable.
+- **Pinch as discrete event vs inferred from thumb-index distance**: discrete
+  events are timing-precise; inferred pinch needs hysteresis tuning.
+- **Two-handed tracking robustness near the body**: many SDKs lose tracking
+  on one hand when both hands come close together. Test before committing
+  to two-handed gestures.
+- **Aim ray** (for distant UI): often provided by the SDK with sensitivity
+  presets. Generally `arm-direction-only` is stable but coarse;
+  `arm + wrist blend` is more responsive but jittery — the right choice
+  depends on whether the user is selecting a far target or sweeping a near
+  one.
+- **Poke / fingertip pose**: often exposed separately from aim. Use poke
+  for near interaction (touch, push) and aim for far interaction (point,
+  select).
+
+### Comfort thresholds (any class)
+
+- Sustained arm-up: ~30–60 s before fatigue (gorilla arm).
+- Content above eye line: avoid > 15° upward gaze for extended periods.
+- Minimum viewing distance: 30–50 cm for AR; 1 m+ for VR.
+- Camera movement initiated by anything other than the player's head
+  movement is a motion-sickness vector on VR/MR; on AR the real world
+  anchors perception so the risk is lower.
+
+---
+
 *This document is the device-level north star. Update first whenever the
 target hardware changes — every other design document depends on it.*
