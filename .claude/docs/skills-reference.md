@@ -26,7 +26,7 @@
 
 | Command | Purpose |
 |---------|---------|
-| `/sprint-plan` | Generate or update a sprint plan |
+| `/feature-plan` | Draft a feature plan in `docs/production/features/` |
 | `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
 | `/asset-audit` | Asset naming, size, and format compliance |
 

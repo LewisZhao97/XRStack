@@ -121,7 +121,7 @@ Beyond plan-implement-review, the harness provides advanced workflows:
 - **Continuous Learning** — `/learn-eval` extracts reusable patterns; `/instinct-status` shows confidence-scored instincts; `/evolve` promotes instincts into skills
 - **Session Management** — `/save-session` persists state; `/sessions` lists/loads/aliases saved sessions
 - **Game Design** — `/brainstorm` guides concept ideation from zero to structured design; `/design-review` validates design docs before implementation
-- **Templates** — 14 document templates in `.claude/docs/templates/` for ADRs, GDDs, sprint plans, and more
+- **Templates** — 14 document templates in `.claude/docs/templates/` for ADRs, GDDs, feature plans, and more
 
 ## Where to Find More
 

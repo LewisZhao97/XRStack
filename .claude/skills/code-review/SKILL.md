@@ -1,9 +1,9 @@
 ---
 name: code-review
-description: "Performs an architectural and quality code review on a specified file or set of files. Checks for coding standard compliance, architectural pattern adherence, SOLID principles, testability, and performance concerns."
+description: "Performs an architectural and quality code review on a specified file or set of files. Checks for coding standard compliance, architectural pattern adherence, SOLID principles, testability, and performance concerns. Offers to export the review as a dated document under docs/production/code-reviews/."
 argument-hint: "[path-to-file-or-directory]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash
+allowed-tools: Read, Glob, Grep, Bash, Write
 ---
 
 When this skill is invoked:
@@ -72,3 +72,12 @@ When this skill is invoked:
 
 ### Verdict: [APPROVED / APPROVED WITH SUGGESTIONS / CHANGES REQUIRED]
 ```
+
+9. **Offer to export.** After delivering the review in chat, ask the user a single short question — e.g. *"Want me to save this review to `docs/production/code-reviews/` as a dated document?"* — and wait for their answer. Don't auto-export. Don't bundle the question with other follow-up work; it's a clean yes/no.
+
+10. **If the user says yes**, write the full review to `docs/production/code-reviews/code-review-YYYY-MM-DD.md` (today's date in ISO format). Add a short header with date, scope (which files/system was reviewed), and reviewer (e.g. *self-review* or the agent that produced it). Preserve the section structure exactly as delivered above. After saving, append a `## Resolution` section as a placeholder for tracking which review items get fixed later — leave it empty for the user to fill in or for a future session to populate.
+
+    - **Filename collision**: if `code-review-YYYY-MM-DD.md` already exists, append a counter — `code-review-YYYY-MM-DD-2.md`, `code-review-YYYY-MM-DD-3.md`, etc. Don't overwrite. Multiple reviews on the same day are normal.
+    - **Lazy scaffolding**: the `code-reviews/` directory should already exist (it's a durable production folder per the milestone tracker convention). If for some reason it doesn't, create it.
+
+11. **If the user says no** (or doesn't want it persisted), do nothing further. The chat output is the deliverable.

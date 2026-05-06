@@ -161,7 +161,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 
 | # | Action | Tests | Expected Result | Pass? |
 |---|--------|-------|-----------------|-------|
-| 4.1 | Run `/sprint-plan` for a 2-week sprint | **Skill**: `sprint-plan`, **Agent**: `producer` | Sprint plan with capacity, priorities, task breakdown. References **Template**: `sprint-plan.md` | |
+| 4.1 | Run `/feature-plan` for a feature in the active milestone | **Skill**: `feature-plan`, **Agent**: `producer` | Feature plan with goal, phases, acceptance criteria, sized to the work. References **Template**: `feature-plan.md` | |
 | 4.2 | Run `/scope-check` against the original plan from Phase 1 | **Skill**: `scope-check` | Scope analysis comparing current vs planned. Flags any additions, quantifies bloat | |
 | 4.3 | Run `/milestone-gate` | **Skill**: `milestone-gate` | Phase readiness check: artifact presence, quality gates, open bugs/TODOs. Produces PASS / CONCERNS / FAIL verdict with blockers. | |
 | 4.4 | Run `/retrospective` | **Skill**: `retrospective` | Sprint retrospective analyzing work done, velocity, blockers, patterns | |
@@ -169,7 +169,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | 4.6 | Run `/gate-check` for "pre-production → production" transition | **Skill**: `gate-check` | Phase gate validation with PASS/CONCERNS/FAIL verdict. Lists blockers and required artifacts. References **Template**: `project-stage-report.md` | |
 
 ### Validation Criteria
-- [ ] `/sprint-plan` produced actionable sprint backlog
+- [ ] `/feature-plan` produced an actionable feature plan with verifiable acceptance criteria
 - [ ] `/scope-check` compared against plan (even if scope unchanged)
 - [ ] `/milestone-review` gave a go/no-go recommendation
 - [ ] `/retrospective` produced actionable insights
@@ -345,7 +345,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 | xr-perf-profile | 3 | 3.1 |
 | perf-profile | 3 | 3.2 |
 | build-platform | 3 | 3.3 |
-| sprint-plan | 4 | 4.1 |
+| feature-plan | 4 | 4.1 |
 | scope-check | 4 | 4.2 |
 | milestone-review | 4 | 4.3 |
 | retrospective | 4 | 4.4 |
@@ -394,7 +394,7 @@ Each phase lists exactly which items it tests. Items marked with `*` are tested 
 |-------|-------|---------------|
 | game-designer | 1 | `/brainstorm` |
 | technical-director | 1 | `/plan`, `/architecture-decision` |
-| producer | 1, 4 | `/design-review`, `/sprint-plan` |
+| producer | 1, 4 | `/design-review`, `/feature-plan` |
 | xr-specialist | 2 | XR implementation questions |
 | unity-xri-specialist | 2 | XRI component setup |
 | unity-specialist | 2 | Unity API questions |

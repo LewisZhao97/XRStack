@@ -36,8 +36,8 @@ Analyze project structure and content:
 - Estimate lines of code (rough scale)
 
 **Production Artifacts** (`docs/production/`):
-- Check for active sprint plans
-- Look for milestone definitions
+- Check for active feature plans in `docs/production/features/`
+- Look for milestone trackers (e.g. `m1-completion.md`)
 - Find roadmap documents
 
 **Prototypes** (`prototypes/`):
@@ -75,7 +75,7 @@ auto-detect using these heuristics (check from most-advanced backward):
 
 - "I see combat code (`Assets/Scripts/Gameplay/`) but no `docs/app design docs/combat-system.md`. Was this prototyped first, or should we write a design doc?"
 - "You have 15 ADRs but no architecture overview. Should I create one to help new contributors?"
-- "No sprint plans in `docs/production/`. Are you tracking work elsewhere (Jira, Trello, etc.)?"
+- "No feature plans in `docs/production/features/` and no milestone tracker. Are you tracking work elsewhere (Jira, Trello, etc.)?"
 - "I found a game concept but no systems index. Have you decomposed the concept into individual systems yet? Consider `/architecture-decision` to record the system breakdown."
 - "Prototypes directory has 3 projects with no READMEs. Were these experiments, or do they need documentation?"
 
@@ -118,7 +118,7 @@ If user provided a role argument (e.g., `/project-stage-detect programmer`):
 - Prototype documentation
 
 **Producer**:
-- Focus on sprint plans, milestone tracking, roadmap
+- Focus on feature plans, milestone trackers, roadmap
 - Cross-team coordination docs
 
 **General** (no role):
@@ -170,7 +170,7 @@ After generating the report, suggest relevant next steps:
 
 - **Concept exists but no systems index?** → `/architecture-decision` to document the system breakdown, or `/brainstorm` Phase 7 to derive architecture from the concept
 - **Missing architecture docs?** → `/architecture-decision`
-- **No sprint plan?** → `/sprint-plan`
+- **No feature plan for active work?** → `/feature-plan`
 - **Approaching milestone?** → `/milestone-gate`
 
 ---

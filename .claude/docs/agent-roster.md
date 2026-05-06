@@ -7,7 +7,7 @@
 | Agent | Domain | When to Use |
 |-------|--------|-------------|
 | `technical-director` | Technical vision | Architecture decisions, technology choices, performance strategy |
-| `producer` | Production & release | Sprint planning, milestones, release coordination |
+| `producer` | Production & release | Feature & milestone planning, release coordination |
 
 ## Tier 2 — Leads (Sonnet)
 

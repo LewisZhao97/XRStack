@@ -34,7 +34,7 @@
 | Agent | Purpose | When to Use |
 |-------|---------|-------------|
 | qa-lead | Test strategy & execution | Test plans, test cases, bug reports, quality gates |
-| producer | Coordination & release | Sprint planning, milestones, release readiness |
+| producer | Coordination & release | Feature & milestone planning, release readiness |
 
 ## Immediate Agent Usage
 

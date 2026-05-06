@@ -97,14 +97,14 @@ perf   = performance-analyst     unity  = unity-specialist
 5. qa-lead             — Verifies fix and runs regression
 ```
 
-### Pattern 4: Sprint Cycle
+### Pattern 4: Feature Cycle
 
 ```
-1. producer            — Plans sprint with /sprint-plan
-2. [All agents]        — Execute assigned tasks
-3. qa-lead             — Continuous testing during sprint
-4. lead-programmer     — Continuous code review during sprint
-5. producer            — Sprint milestone review with /milestone-gate
+1. producer            — Plans the next feature with /feature-plan
+2. [All agents]        — Execute the feature plan's phases
+3. qa-lead             — Continuous testing as phases land
+4. lead-programmer     — Continuous code review as phases land
+5. producer            — Milestone readiness check with /milestone-gate
 ```
 
 ### Pattern 5: Release Pipeline

@@ -48,7 +48,7 @@ Three tiers of agents, from strategic to tactical:
 | `/xr-test` | Generate XR interaction and comfort tests |
 | `/xr-perf-profile` | XR frame budget analysis |
 | `/build-platform` | Validate build settings for glasses or PC streaming |
-| `/sprint-plan` | Create or update sprint plans |
+| `/feature-plan` | Draft a feature plan in `docs/production/features/` |
 | `/architecture-decision` | Create an ADR |
 | `/prototype` | Scaffold a throwaway prototype |
 | `/bug-report` | Create structured bug report |
@@ -82,7 +82,7 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 
 1. Run `/start-harness` or `/project-stage-detect` — analyzes what exists
 2. Run `/milestone-gate` to validate phase readiness
-3. Run `/sprint-plan new` to plan next work
+3. Run `/feature-plan` to plan the next feature in the active milestone
 
 ### Path C: Bug Fix
 

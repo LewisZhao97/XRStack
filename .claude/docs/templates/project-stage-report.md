@@ -51,8 +51,8 @@
 ### Production Management
 - **Status**: [X%] complete
 - **Found**:
-  - Sprint plans: [N] in `docs/production/sprints/`
-  - Milestones: [N] in `docs/production/milestones/`
+  - Feature plans: [N] in `docs/production/features/`
+  - Milestone trackers: [N] in `docs/production/` (e.g. `m1-completion.md`)
   - Roadmap: [Exists | Missing]
 - **Key Gaps**:
   - [ ] [Missing production artifact + impact]
@@ -157,7 +157,7 @@
 Based on gaps identified, consider running:
 
 - `/architecture-decision` — [For which gap]
-- `/sprint-plan` — [If production planning missing]
+- `/feature-plan` — [If production planning missing]
 - `/milestone-gate` — [If approaching deadline]
 
 ---
@@ -168,8 +168,9 @@ Based on gaps identified, consider running:
 docs/app design docs/    [N] design files
 docs/architecture/       [N] ADRs
 docs/production/
-  sprints/               [N] plans
-  milestones/            [N] definitions
+  features/              [N] feature plans
+  code-reviews/          [N] dated reviews
+  m{N}-completion.md     active milestone tracker(s)
 
 Assets/Scripts/          [N] source files
 Assets/Tests/            [N] test files
