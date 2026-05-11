@@ -2,24 +2,21 @@
 
 ## What Is This?
 
-A pre-built Claude Code workflow for Unity XR development. 16 specialist agents,
-24 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for
+A pre-built Claude Code workflow for Unity XR development. 14 specialist agents,
+14 slash commands, 21 auto-loaded rules, and 10 lifecycle hooks — all tuned for
 XR applications targeting XR glasses and PC streaming.
 
 ## How to Use
 
 ### 1. Understand the Hierarchy
 
-Three tiers of agents, from strategic to tactical:
+Two tiers of agents, plus the user at the top:
 
-- **Tier 1 (Opus)**: Directors
-  - `technical-director` — architecture and technology decisions
-  - `producer` — scheduling, coordination, release
+- **Director (Opus)**: `technical-director` — architecture and technology decisions
+- **Leads (Sonnet)**: `lead-programmer`, `xr-specialist`, `qa-lead`
+- **Specialists (Sonnet/Haiku)**: XR, Unity engine, programming, design
 
-- **Tier 2 (Sonnet)**: Leads
-  - `lead-programmer`, `xr-specialist`, `qa-lead`
-
-- **Tier 3 (Sonnet/Haiku)**: Specialists — XR, Unity engine, programming, quality
+Scheduling, scope, and release are owned by the user, not an agent.
 
 ### 2. Pick the Right Agent
 
@@ -30,10 +27,8 @@ Three tiers of agents, from strategic to tactical:
 | Review code quality | `lead-programmer` |
 | Write a shader for XR | `unity-technical-artist` |
 | Fix a performance problem | `performance-analyst` |
-| Design SDK public API | `sdk-developer` |
 | Write test cases | `qa-lead` |
 | Make an architecture decision | `technical-director` |
-| Plan a sprint / manage release | `producer` |
 | Work with XRI components | `unity-xri-specialist` |
 | Review rendering/VFX | `unity-technical-artist` |
 | Design game mechanics | `game-designer` |
@@ -50,17 +45,16 @@ Three tiers of agents, from strategic to tactical:
 | `/build-platform` | Validate build settings for glasses or PC streaming |
 | `/feature-plan` | Draft a feature plan in `docs/production/features/` |
 | `/architecture-decision` | Create an ADR |
-| `/prototype` | Scaffold a throwaway prototype |
 | `/bug-report` | Create structured bug report |
 | `/milestone-gate` | Phase readiness check |
 
-See `skills-reference.md` for the full list of 24 commands.
+See `skills-reference.md` for the full list of 14 commands.
 
 ### 4. Follow the Coordination Rules
 
-1. Work flows down the hierarchy: Directors -> Leads -> Specialists
+1. Work flows down the hierarchy: Director → Leads → Specialists
 2. Conflicts escalate up the hierarchy
-3. Cross-system work is coordinated by the `producer`
+3. Cross-system work is coordinated by the user
 4. Agents do not modify files outside their domain without delegation
 5. All decisions are documented
 
@@ -97,11 +91,11 @@ ensures CLAUDE.md is harness-compliant, and routes you to the right workflow.
 CLAUDE.md                           — Project instructions (~100 lines)
 .claude/
   settings.json                     — Permissions, hooks, safety rules
-  agents/                           — 16 agent definitions
-  skills/                           — 24 slash command definitions
+  agents/                           — 14 agent definitions
+  skills/                           — 14 slash command definitions
   rules/
-    common/                         — 19 rules (always active)
+    common/                         — 15 rules (always active)
     csharp/                         — 6 rules (active for *.cs files)
-  hooks/                            — 8 lifecycle scripts
+  hooks/                            — 10 lifecycle scripts
   docs/                             — references and guides
 ```

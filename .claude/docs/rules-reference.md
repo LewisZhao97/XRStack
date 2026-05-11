@@ -2,7 +2,7 @@
 
 Rules in `.claude/rules/` are automatically loaded when editing files in matching paths.
 
-## Common Rules (19) — Always Active
+## Common Rules (15) — Always Active
 
 | Rule File | Enforces |
 |-----------|----------|
@@ -13,18 +13,14 @@ Rules in `.claude/rules/` are automatically loaded when editing files in matchin
 | `development-workflow.md` | Feature implementation pipeline (research, plan, TDD, review) |
 | `testing.md` | TDD workflow, 80% coverage requirement |
 | `test-standards.md` | Test naming (`[Method]_[Scenario]_[Expected]`), AAA pattern |
-| `security.md` | Secret management, input validation, OWASP |
 | `performance.md` | Model selection, context window management |
 | `patterns.md` | ScriptableObject events, service locator, state machine |
 | `agents.md` | Agent orchestration and delegation rules |
 | `hooks.md` | Hook types and best practices |
 | `engine-code.md` | Core/SDK code: zero allocs in hot paths, thread safety |
 | `gameplay-code.md` | Feature code: data-driven values, delta time, no UI coupling |
-| `network-code.md` | Networking: server-authoritative, versioned messages |
 | `ui-code.md` | Spatial UI: no game state ownership, localization-ready |
 | `shader-code.md` | Shader naming, precision, XR stereo rendering |
-| `data-files.md` | JSON validity, naming conventions, schema rules |
-| `prototype-code.md` | Relaxed standards for prototype code |
 
 ## C# Rules (6) — Active for `*.cs` / `*.csx` Files
 

@@ -5,11 +5,8 @@
 ```
                         [Human Developer]
                               |
-                +-------------+-------------+
-                |                           |
-        technical-director              producer
-                |                    (coordinates all)
-                |
+                      technical-director
+                              |
          lead-programmer ─── xr-specialist ─── qa-lead
                 |                  |
      +----------+----------+       |
@@ -17,8 +14,8 @@
     gp   tl   ui  uta  perf        |
                                    |
                      +-------------+-------------+
-                     |      |      |      |
-                    xri   openxr  plat   sdk
+                     |      |      |
+                    xri   openxr  plat
                                   unity
                                     |
                                   uta (delegate)
@@ -32,8 +29,8 @@
 gp     = gameplay-programmer     xri    = unity-xri-specialist
 tl     = tools-programmer        openxr = openxr-runtime-specialist
 ui     = ui-programmer           plat   = platform-specialist
-uta    = unity-technical-artist  sdk    = sdk-developer
-perf   = performance-analyst     unity  = unity-specialist
+uta    = unity-technical-artist  unity  = unity-specialist
+perf   = performance-analyst
 ```
 
 ## Delegation Rules
@@ -43,9 +40,8 @@ perf   = performance-analyst     unity  = unity-specialist
 | From | Can Delegate To |
 |------|----------------|
 | technical-director | lead-programmer, xr-specialist, performance-analyst |
-| producer | Any agent (task assignment within their domain only) |
 | lead-programmer | gameplay-programmer, tools-programmer, ui-programmer, unity-technical-artist |
-| xr-specialist | unity-xri-specialist, openxr-runtime-specialist, platform-specialist, sdk-developer |
+| xr-specialist | unity-xri-specialist, openxr-runtime-specialist, platform-specialist |
 | unity-specialist | unity-technical-artist |
 
 ### Escalation Paths
@@ -55,9 +51,8 @@ perf   = performance-analyst     unity  = unity-specialist
 | Code architecture disagreement | technical-director |
 | Cross-system code conflict | lead-programmer, then technical-director |
 | XR interaction design conflict | xr-specialist |
-| SDK public API change | sdk-developer + technical-director |
 | Performance budget violation | performance-analyst flags, technical-director decides |
-| Schedule / scope conflict | producer |
+| Schedule / scope conflict | the user |
 | Quality gate disagreement | qa-lead, then technical-director |
 
 ## Common Workflow Patterns
@@ -65,29 +60,16 @@ perf   = performance-analyst     unity  = unity-specialist
 ### Pattern 1: New XR Feature
 
 ```
-1. producer            — Schedules work, identifies dependencies
-2. xr-specialist       — Reviews XR constraints (platform, input, comfort)
-3. lead-programmer     — Designs code architecture
-4. [specialist]        — Implements the feature
-5. lead-programmer     — Code review
-6. qa-lead             — Writes test cases, executes tests
-7. performance-analyst — Verifies frame budget
-8. producer            — Marks task complete
+1. user / technical-director — Identifies the feature, runs /feature-plan
+2. xr-specialist             — Reviews XR constraints (platform, input, comfort)
+3. lead-programmer           — Designs code architecture
+4. [specialist]              — Implements the feature
+5. lead-programmer           — Code review (/code-review)
+6. qa-lead                   — Writes test cases, executes tests
+7. performance-analyst       — Verifies frame budget
 ```
 
-### Pattern 2: SDK API Change
-
-```
-1. sdk-developer       — Proposes API design
-2. technical-director  — Reviews architecture impact
-3. lead-programmer     — Reviews integration with app layer
-4. sdk-developer       — Implements the change
-5. lead-programmer     — Code review
-6. qa-lead             — SDK test coverage
-7. producer            — Version bump (semver)
-```
-
-### Pattern 3: Bug Fix
+### Pattern 2: Bug Fix
 
 ```
 1. qa-lead             — Files bug report with /bug-report, triages
@@ -97,33 +79,24 @@ perf   = performance-analyst     unity  = unity-specialist
 5. qa-lead             — Verifies fix and runs regression
 ```
 
-### Pattern 4: Feature Cycle
+### Pattern 3: Feature Cycle
 
 ```
-1. producer            — Plans the next feature with /feature-plan
-2. [All agents]        — Execute the feature plan's phases
+1. user                — Plans the next feature with /feature-plan
+2. [Specialist agents] — Execute the feature plan's phases
 3. qa-lead             — Continuous testing as phases land
 4. lead-programmer     — Continuous code review as phases land
-5. producer            — Milestone readiness check with /milestone-gate
+5. user                — Milestone readiness check with /milestone-gate
 ```
 
-### Pattern 5: Release Pipeline
+### Pattern 4: Release Pipeline
 
 ```
-1. producer            — Declares release candidate, cuts release branch
+1. user                — Declares release candidate, cuts release branch
 2. qa-lead             — Full regression, signs off on quality
 3. performance-analyst — Confirms performance within budgets
-4. producer            — Builds release artifacts, tags release
+4. user                — Builds release artifacts, tags release
 5. technical-director  — Final sign-off
-```
-
-### Pattern 6: Rapid Prototype
-
-```
-1. producer            — Defines hypothesis and success criteria
-2. gameplay-programmer — Scaffolds prototype with /prototype
-3. xr-specialist       — Evaluates XR feasibility
-4. technical-director  — Go/no-go decision on production
 ```
 
 ## Anti-Patterns to Avoid
@@ -131,5 +104,4 @@ perf   = performance-analyst     unity  = unity-specialist
 1. **Bypassing the hierarchy**: A specialist should never make decisions that belong to their lead without consultation.
 2. **Cross-domain implementation**: An agent should never modify files outside their area without explicit delegation.
 3. **Shadow decisions**: All decisions must be documented.
-4. **Monolithic tasks**: Every task should be completable in 1-3 days.
-5. **Assumption-based implementation**: If a spec is ambiguous, ask rather than guess.
+4. **Assumption-based implementation**: If a spec is ambiguous, ask rather than guess.

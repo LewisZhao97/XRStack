@@ -2,7 +2,7 @@
 
 **Generated**: [DATE]
 **Stage**: [Concept | Systems Design | Technical Setup | Pre-Production | Production | Polish | Release]
-**Analysis Scope**: [Full project | Specific role: programmer/designer/producer]
+**Analysis Scope**: [Full project | Specific role: programmer/designer/qa]
 
 ---
 

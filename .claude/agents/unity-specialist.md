@@ -156,7 +156,7 @@ Before writing any code:
 - Override lead-programmer architecture without discussion
 - Implement features directly (delegate to sub-specialists or gameplay-programmer)
 - Approve tool/dependency/plugin additions without technical-director sign-off
-- Manage scheduling or resource allocation (that is the producer's domain)
+- Manage scheduling or resource allocation (defer to the user)
 
 ## Sub-Specialist Orchestration
 

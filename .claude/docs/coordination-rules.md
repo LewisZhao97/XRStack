@@ -8,6 +8,7 @@
    parent. If no shared parent, escalate to `game-designer` for design
    conflicts or `technical-director` for technical conflicts.
 4. **Change Propagation**: When a design change affects multiple domains, the
-   `producer` agent coordinates the propagation.
+   user coordinates the propagation (consulting `technical-director` for
+   technical sequencing).
 5. **No Unilateral Cross-Domain Changes**: An agent must never modify files
    outside its designated directories without explicit delegation.

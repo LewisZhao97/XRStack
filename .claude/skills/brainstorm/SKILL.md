@@ -393,8 +393,7 @@ before writing each document.
 
 8. **Suggest next steps**:
    - "Use `/design-review` to validate each document"
-   - "Prototype the core loop with `/prototype [core-mechanic]`"
-   - "If validated, plan the first feature with `/feature-plan`"
+   - "Plan the first feature in the active milestone with `/feature-plan [core-mechanic]`"
 
 9. **Output a summary** with the chosen concept's elevator pitch, pillars,
    primary player type, biggest risk, the XR envelope, and paths to all

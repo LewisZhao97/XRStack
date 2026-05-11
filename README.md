@@ -3,16 +3,16 @@
   <p align="center">
     A pre-built <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> harness for Unity XR development.
     <br />
-    18 specialist agents, 24 slash commands, 25 auto-loaded rules, and 8 lifecycle hooks — all tuned for XR.
+    14 specialist agents, 14 slash commands, 21 auto-loaded rules, and 10 lifecycle hooks — all tuned for XR.
   </p>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-18-blueviolet" alt="18 Agents"></a>
-  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-24-green" alt="24 Skills"></a>
-  <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-8+2-darkcyan" alt="8+2 Hooks"></a>
-  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-25-red" alt="25 Rules"></a>
+  <a href=".claude/agents"><img src="https://img.shields.io/badge/agents-14-blueviolet" alt="14 Agents"></a>
+  <a href=".claude/skills"><img src="https://img.shields.io/badge/skills-14-green" alt="14 Skills"></a>
+  <a href=".claude/hooks"><img src="https://img.shields.io/badge/hooks-10-darkcyan" alt="10 Hooks"></a>
+  <a href=".claude/rules"><img src="https://img.shields.io/badge/rules-21-red" alt="21 Rules"></a>
   <a href=".mcp.json"><img src="https://img.shields.io/badge/mcps-5-steelblue" alt="5 MCPs"></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/built_for-Claude_Code-goldenrod?logo=anthropic" alt="Built for Claude Code"></a>
   <a><img src="https://img.shields.io/badge/status-experimental-chocolate" alt="Experimental"></a>
@@ -97,20 +97,19 @@ The engineer's role shifts from writing code to **designing the control system**
 |-----------|-------|---------|
 | **Agents** | 18 | Specialist sub-agents with domain expertise |
 | **Skills** | 24 | One-command workflows (`/plan`, `/code-review`, `/xr-test`, ...) |
-| **Rules** | 25 | Auto-loaded coding standards and constraints |
-| **Hooks** | 8 + 2 | 8 lifecycle hooks + 2 optional learning/optimization hooks |
-| **Scripts** | 3 | Node.js session management utilities |
-| **Templates** | 15 | Document templates for design, production, and release artifacts |
+| **Rules** | 21 | Auto-loaded coding standards and constraints |
+| **Hooks** | 10 | Lifecycle hooks for commits, sessions, asset validation, and skill hints |
+| **Templates** | 14 | Document templates for design, production, and release artifacts |
 | **CLAUDE.md** | 1 | Project-wide instructions loaded every conversation |
 | **MCP Servers** | 5 | GitHub, Context7 (docs), Exa (search), Figma, Unity MCP |
 | **settings.json** | 1 | Permissions, hook wiring, safety deny-list |
 
 ## Documentations
 
-- [Agent Roster](.claude/docs/agent-roster.md) — 18 agents, tier hierarchy, delegation map
-- [Skills Reference](.claude/docs/skills-reference.md) — 24 slash commands by category
-- [Rules Reference](.claude/docs/rules-reference.md) — 25 auto-loaded rules by path
-- [Hooks Reference](.claude/docs/hooks-reference.md) — 8 core + 2 optional learning hooks
+- [Agent Roster](.claude/docs/agent-roster.md) — 14 agents, tier hierarchy, delegation map
+- [Skills Reference](.claude/docs/skills-reference.md) — 14 slash commands by category
+- [Rules Reference](.claude/docs/rules-reference.md) — 21 auto-loaded rules by path
+- [Hooks Reference](.claude/docs/hooks-reference.md) — 10 lifecycle hooks
 - [Quick Start](.claude/docs/quick-start.md) — Onboarding paths for new users
 - [Agent Coordination Map](.claude/docs/agent-coordination-map.md) — Workflow patterns and delegation rules
 - [Review Workflow](.claude/docs/review-workflow.md) — Code review routing
@@ -299,18 +298,17 @@ You type a message
 
 **Hooks** are shell scripts triggered by lifecycle events. `validate-commit.sh` runs before every `git commit` to check for hardcoded values and JSON validity. `session-start.sh` loads branch context when you start a session.
 
-## Working Agents (18)
+## Working Agents (14)
 
-The workflow is organized in three tiers, from strategic to tactical:
+The workflow has a director, three leads, and a roster of specialists. Scheduling, scope, and release coordination are owned by the user, not an agent.
 
-### Tier 1 — Directors (Strategic Decisions)
+### Director (Strategic Decisions)
 
 | Agent | Responsibility |
 |-------|---------------|
 | `technical-director` | Architecture, technology choices, performance strategy, technical risk |
-| `producer` | Sprint planning, milestones, scope, release coordination |
 
-### Tier 2 — Leads (Tactical Decisions)
+### Leads (Tactical Decisions)
 
 | Agent | Responsibility |
 |-------|---------------|
@@ -318,31 +316,30 @@ The workflow is organized in three tiers, from strategic to tactical:
 | `qa-lead` | Test strategy, test execution, quality gates, release readiness |
 | `xr-specialist` | XR interaction authority, tracking, spatial UI |
 
-### Tier 3 — Specialists (Implementation)
+### Specialists (Implementation)
 
 | Category | Agents |
 |----------|--------|
-| **XR** | `unity-xri-specialist`, `openxr-runtime-specialist`, `platform-specialist`, `sdk-developer` |
-| **Unity Engine** | `unity-specialist`, `unity-shader-specialist` |
+| **XR** | `unity-xri-specialist`, `openxr-runtime-specialist`, `platform-specialist` |
+| **Unity Engine** | `unity-specialist`, `unity-technical-artist` |
 | **Programming** | `gameplay-programmer`, `tools-programmer`, `ui-programmer` |
-| **Art & Tech Art** | `technical-artist` |
-| **Quality** | `security-engineer`, `performance-analyst` |
+| **Quality** | `performance-analyst` |
 | **Design** | `game-designer` |
 
 ### Engine & XR Hierarchies
 
 ```
 unity-specialist (lead)
-└── unity-shader-specialist       # Shader Graph, VFX Graph, URP
+└── unity-technical-artist        # Shader Graph, ShaderLab/HLSL, compute, VFX Graph,
+                                  # URP render features, post-processing
 
 xr-specialist (authority)
 ├── unity-xri-specialist          # XRI interactors, locomotion
-├── openxr-runtime-specialist     # OpenXR loader, runtime
-├── platform-specialist           # XR glasses / PC streaming builds
-└── sdk-developer                 # SDK public API, UPM
+├── openxr-runtime-specialist     # OpenXR loader, runtime (kept for future use; not active on the current vendor stack)
+└── platform-specialist           # XR glasses / PC streaming builds
 ```
 
-## Slash Commands (24)
+## Slash Commands (14)
 
 ### XR-Specific
 | Command | Purpose |
@@ -355,9 +352,8 @@ xr-specialist (authority)
 | Command | Purpose |
 |---------|---------|
 | `/plan` | Create implementation plan (waits for confirmation before coding) |
-| `/code-review` | Architectural and quality code review |
+| `/code-review` | Architectural and quality code review (offers dated export to `docs/production/code-reviews/`) |
 | `/architecture-decision` | Create an Architecture Decision Record |
-| `/prototype` | Rapid prototyping with relaxed standards |
 | `/bug-report` | Structured bug report creation |
 | `/design-review` | Review game design docs for completeness and implementability |
 | `/brainstorm` | Guided concept ideation from zero to structured design |
@@ -365,42 +361,21 @@ xr-specialist (authority)
 ### Production
 | Command | Purpose |
 |---------|---------|
-| `/sprint-plan` | Plan or update a sprint |
+| `/feature-plan` | Draft a per-feature implementation plan in `docs/production/features/` |
 | `/milestone-gate` | Milestone/phase readiness (artifacts, quality, go/no-go verdict) |
 | `/asset-audit` | Asset naming, size, and format compliance |
 
-### Verification & Evaluation
-| Command | Purpose |
-|---------|---------|
-| `/verify` | Run 6-phase verification loop (build, compile, analysis, tests, XR perf, diff) |
-| `/eval` | Define, check, and report eval-driven development criteria |
-| `/checkpoint` | Create or verify named git checkpoints during implementation |
-
-### Continuous Learning
-| Command | Purpose |
-|---------|---------|
-| `/learn-eval` | Extract reusable patterns from current session with quality gate |
-| `/instinct-status` | Show learned instincts (project + global) with confidence scores |
-| `/evolve` | Cluster related instincts into skills, commands, or agents |
-
-### Session Management
-| Command | Purpose |
-|---------|---------|
-| `/save-session` | Save full session state for future resume |
-| `/sessions` | List, load, alias, and browse saved sessions |
-
-### Onboarding & Team
+### Onboarding
 | Command | Purpose |
 |---------|---------|
 | `/start-harness` | Discover project, ensure CLAUDE.md harness compliance, route to workflow |
-| `/team-ui` | Orchestrate UI team |
 | `/project-stage-detect` | Auto-detect project stage and recommend next steps |
 
-## Rules (25)
+## Rules (21)
 
 Rules auto-load based on file path patterns. You never invoke them manually.
 
-### Common Rules (19) — Always Active
+### Common Rules (15) — Always Active
 | Rule | Enforces |
 |------|----------|
 | `coding-style.md` | Unity naming conventions (`m_`, `k_`, `s_`), formatting, immutability |
@@ -408,7 +383,6 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 | `git-workflow.md` | Commit message format, PR workflow |
 | `code-review.md` | Review checklist, severity levels |
 | `testing.md` | TDD workflow, 80% coverage requirement |
-| `security.md` | Secret management, input validation |
 | `development-workflow.md` | Feature implementation pipeline |
 | `patterns.md` | ScriptableObject events, service locator, state machine |
 | `performance.md` | Model selection, context window management |
@@ -416,9 +390,6 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 | `gameplay-code.md` | Interaction and feature code standards |
 | `shader-code.md` | Shader naming, precision, XR stereo rendering |
 | `ui-code.md` | Spatial UI, world-space canvas patterns |
-| `network-code.md` | Networking standards |
-| `data-files.md` | JSON/config file standards |
-| `prototype-code.md` | Relaxed standards for prototype code |
 | `test-standards.md` | Test naming, AAA pattern |
 | `agents.md` | Agent orchestration and delegation rules |
 | `hooks.md` | Hook types and best practices |
@@ -433,29 +404,20 @@ Rules auto-load based on file path patterns. You never invoke them manually.
 | `security.md` | XR input validation, network security |
 | `hooks.md` | `dotnet format`, build verification |
 
-## Hooks (8 + 2 optional)
-
-### Core Hooks (always active)
+## Hooks (10)
 
 | Hook | Trigger | Purpose |
 |------|---------|---------|
 | `session-start.sh` | Session start | Load branch, Unity version, XR package context |
 | `detect-gaps.sh` | Session start | Flag missing docs, tests, or XR packages |
 | `validate-commit.sh` | Before `git commit` | JSON validation, hardcoded value detection, TODO format |
+| `code-review-hint.sh` | Before `git commit` | Advisory reminder to run `/code-review` when staged `.cs` files are about to be committed |
 | `validate-push.sh` | Before `git push` | Protected branch warning, test reminder |
 | `validate-assets.sh` | After file write/edit | Asset naming and JSON validation |
+| `milestone-gate-hint.sh` | After file write/edit | Suggests `/milestone-gate` when a milestone tracker is fully resolved and verdict is TBD |
 | `pre-compact.sh` | Before context compaction | Dump session state for recovery |
 | `session-stop.sh` | Session end | Log session summary, archive state |
 | `log-agent.sh` | Agent spawn | Audit trail for agent invocations |
-
-### Optional Learning Hooks (enable in settings.json)
-
-| Hook | Trigger | Purpose |
-|------|---------|---------|
-| `observe.sh` | Every tool call (Pre/PostToolUse) | Capture tool use events for instinct pattern analysis |
-| `suggest-compact.sh` | Before Edit/Write | Suggest `/compact` at logical phase transitions (50+ calls) |
-
-These hooks power the continuous learning system. `observe.sh` captures tool usage patterns into project-scoped observation logs. A background observer (optional, uses Haiku) analyzes observations and creates atomic "instincts" — small learned behaviors with confidence scoring. See [Hooks Reference](.claude/docs/hooks-reference.md) for setup instructions.
 
 ## MCP Servers (5)
 
@@ -497,7 +459,7 @@ Telling the agent "use Unity conventions" in every message doesn't scale. XRStac
 
 ### 2. Specialist Over Generalist
 
-A single Claude session answering XR questions, reviewing code, and planning sprints produces mediocre results everywhere. Specialist agents carry deep domain context — the `xr-specialist` knows about motion sickness, the `performance-analyst` knows about frame budgets, and the `sdk-developer` knows about semantic versioning. Routing to the right specialist produces better output.
+A single Claude session answering XR questions, reviewing code, and writing shaders produces mediocre results everywhere. Specialist agents carry deep domain context — the `xr-specialist` knows about motion sickness, the `performance-analyst` knows about frame budgets, and the `unity-technical-artist` knows about ShaderLab, compute shaders, and URP render features. Routing to the right specialist produces better output.
 
 ### 3. Progressive Disclosure
 
@@ -601,7 +563,7 @@ The `paths` frontmatter controls when the rule loads. Omit it for always-on rule
 
 ### Adapting for Non-XR Unity Projects
 
-1. Remove XR-specific agents: `xr-specialist`, `unity-xri-specialist`, `openxr-runtime-specialist`, `platform-specialist`, `sdk-developer`
+1. Remove XR-specific agents: `xr-specialist`, `unity-xri-specialist`, `openxr-runtime-specialist`, `platform-specialist`
 2. Remove XR-specific rules: `xr-development.md`, `unity-xr.md`
 3. Remove XR-specific commands: `/xr-test`, `/xr-perf-profile`, `/build-platform`
 4. Update `CLAUDE.md` to remove XR constraints and performance budgets

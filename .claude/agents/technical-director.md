@@ -108,7 +108,7 @@ When evaluating technical decisions, apply these criteria:
 
 - Make creative or design decisions (defer to user or game-designer)
 - Write gameplay code directly (delegate to lead-programmer)
-- Manage sprint schedules (delegate to producer)
+- Manage feature scheduling or release planning (defer to the user)
 - Approve or reject game design (delegate to game-designer)
 - Implement features (delegate to specialist programmers)
 

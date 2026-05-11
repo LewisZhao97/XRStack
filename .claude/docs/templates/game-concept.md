@@ -310,6 +310,5 @@ the combat-crafting loop engaging for 30+ minute sessions"]
 - [ ] Create game pillars document (`/design-review` to validate)
 - [ ] Decompose concept into systems (`/architecture-decision` — documents system breakdown, dependencies, and priorities)
 - [ ] Create first architecture decision record (`/architecture-decision`)
-- [ ] Prototype core loop (`/prototype [core-mechanic]`)
-- [ ] Validate core loop with playtest (`/playtest-report`)
-- [ ] Plan first feature in the milestone (`/feature-plan`)
+- [ ] Plan first feature in the milestone (`/feature-plan [core-mechanic]`)
+- [ ] Validate core loop with playtest

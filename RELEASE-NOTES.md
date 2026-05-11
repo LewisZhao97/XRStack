@@ -1,31 +1,47 @@
-# XRStack v0.0.1 — Initial Release
+# XRStack v0.0.2 — Trim Pass
 
-The first public release of XRStack, a Claude Code harness for Unity XR development.
+A focused trim of the v0.0.1 inventory. Agents, skills, and rules that didn't earn their context budget have been cut. What remains is sharper and matches how the harness is actually used.
 
 ## What's In the Box
 
-| Component | Count |
-|-----------|-------|
-| Specialist agents | 30 |
-| Slash commands | 43 |
-| Auto-loaded rules | 25 |
-| Lifecycle hooks | 8 + 2 optional |
-| Document templates | 18 |
-| Session scripts | 3 |
+| Component | Count | Change |
+|-----------|-------|--------|
+| Specialist agents | 14 | -4 from v0.0.1 |
+| Slash commands | 14 | -10 from v0.0.1 |
+| Auto-loaded rules | 21 | -4 from v0.0.1 |
+| Lifecycle hooks | 10 | +2 from v0.0.1 |
+| Document templates | 14 | -4 from v0.0.1 |
 
 ## Highlights
 
-**XR-first workflow** — Frame budgets (11ms/90Hz), draw call limits (<100 mobile, <300 PC), zero-GC hot paths, and comfort constraints are baked into every agent, rule, and skill. Not bolted on after the fact.
+**Scheduling is no longer an agent's job.** The `producer` agent is gone. Sprint-style planning is replaced by `/feature-plan` (one plan per coherent feature) plus `/milestone-gate` (PASS / CONCERNS / FAIL verdict). The user owns scheduling, scope, and release coordination.
 
-**30 specialist agents** — From `xr-specialist` (hand tracking, spatial UI) to `performance-analyst` (frame budget analysis) to `sdk-developer` (UPM versioning). Organized in 3 tiers: Directors (Opus), Leads (Sonnet), Specialists (Sonnet/Haiku).
+**`/brainstorm` is now XR-aware.** A new Phase 0 (XR Device Discovery) captures display class, input fidelity, performance budget, and comfort defaults — producing an "XR Envelope" that hard-filters concept generation downstream. A flat-screen survival test in Phase 2 rejects concepts that are flat-screen ideas with a headset gimmick.
 
-**43 slash commands** — `/plan` before coding, `/code-review` after coding, `/xr-test` for XR-specific tests, `/verify` for 6-phase validation, `/brainstorm` for concept ideation, `/save-session` for state persistence.
+**`/start-harness` got honest.** Discovery is now a printed checklist with ticked items, not a silent gather. SDK packages are detected by shape (`file:` manifest entries + native binaries), not by hardcoded name — works with private/confidential SDKs.
 
-**Mechanical enforcement** — Hooks validate commits, block force-pushes, detect missing docs, and audit agent invocations. Rules auto-load by file type. `settings.json` deny-lists dangerous commands. Conventions are enforced, not documented and hoped for.
+**Two new hint hooks.** `code-review-hint.sh` reminds you to run `/code-review` before committing C# changes. `milestone-gate-hint.sh` suggests `/milestone-gate` when a milestone tracker is fully resolved and the verdict is still TBD. Advisory, never blocking.
 
-**Continuous learning** — `/learn-eval` extracts patterns from sessions. `/instinct-status` tracks confidence-scored learned behaviors. `/evolve` promotes instincts into skills. The harness gets better over time.
+**Templates rebuilt around Unity paths.** `project-stage-report.md` now references `Assets/Scripts/`, `Assets/Tests/`, `Assets/Prototypes/`, and `docs/app design docs/` instead of the generic `src/` / `design/` / `tests/` layout. `systems-index.md` categories rewritten for XR (Interaction added, Economy and Narrative removed).
 
-**Plugin distribution** — Install via Claude Code's plugin system (`/plugin install xrstack@xrstack`) or copy the `.claude/` folder directly. Both work.
+**One merged tech-art agent.** `technical-artist` + `unity-shader-specialist` became `unity-technical-artist`, with added ShaderLab/HLSL, compute shaders, URP render features, and post-processing duties.
+
+## Removed
+
+Agents that didn't fit a solo / small-team XR workflow:
+- `producer`, `sdk-developer`, `security-engineer`, `technical-artist`, `unity-shader-specialist`
+
+Skills that didn't carry their weight:
+- `/sprint-plan` (replaced by `/feature-plan`), `/prototype`, `/team-ui`
+- `/verify`, `/eval`, `/checkpoint` (verification & eval pipeline)
+- `/save-session`, `/sessions` (session-state pipeline)
+- `/learn-eval`, `/instinct-status`, `/evolve` (continuous learning pipeline)
+
+Rules:
+- `security.md` (common), `data-files.md`, `network-code.md`, `prototype-code.md`
+
+Templates:
+- `sprint-plan.md`, `milestone-definition.md`
 
 ## Installation
 
@@ -48,20 +64,12 @@ cp XRStack/CLAUDE.md YourProject/CLAUDE.md
 - Claude Code CLI
 - Unity 6.x project
 - Git, Bash (Git Bash on Windows)
-- Recommended: jq, Python 3, Node.js
+- Optional: Node.js (no longer required since session scripts were removed)
 
-## Known Limitations
+## Upgrading from v0.0.1
 
-- MCP server integrations not yet included (planned)
-- Plugin marketplace submission to Anthropic pending
-- Hooks require Bash (Git Bash on Windows)
-- Continuous learning observation hooks require Python 3
-
-## What's Next
-
-See the [development plan](.claude/docs/agent-development-plan.md) for the full roadmap. Near-term priorities:
-
-- `/xr-comfort-check`, `/scene-audit`, `/shader-review` skills
-- OpenXR runtime and SDK API rules
-- `.meta` file and `.asmdef` validation hooks
-- MCP server integrations
+If you were using removed skills or agents in your own files:
+- `/sprint-plan` → use `/feature-plan` per feature instead
+- `producer` agent → user owns scheduling; consult `technical-director` for technical priorities and `qa-lead` for quality
+- `sdk-developer` agent → escalate SDK API changes to `lead-programmer` + `technical-director`
+- Removed continuous-learning skills → no replacement; the pipeline was cut entirely

@@ -114,13 +114,11 @@ Unity conventions, **not** .NET. Full details in `rules/common/coding-style.md`.
 
 ## Key Workflows
 
-Beyond plan-implement-review, the harness provides advanced workflows:
+Beyond plan-implement-review, the harness provides:
 
-- **Verification Loop** — `/verify` runs a 6-phase check (build, compile, analysis, tests, XR perf, diff)
-- **Eval-Driven Development** — `/eval` defines success criteria upfront; `/checkpoint` creates named git save points
-- **Continuous Learning** — `/learn-eval` extracts reusable patterns; `/instinct-status` shows confidence-scored instincts; `/evolve` promotes instincts into skills
-- **Session Management** — `/save-session` persists state; `/sessions` lists/loads/aliases saved sessions
+- **Feature Planning** — `/feature-plan` drafts a per-feature implementation plan grounded in the milestone tracker; `/milestone-gate` produces a readiness verdict
 - **Game Design** — `/brainstorm` guides concept ideation from zero to structured design; `/design-review` validates design docs before implementation
+- **Project Discovery** — `/start-harness` discovers and routes; `/project-stage-detect` reports stage, gaps, and next steps
 - **Templates** — 14 document templates in `.claude/docs/templates/` for ADRs, GDDs, feature plans, and more
 
 ## Where to Find More
@@ -128,8 +126,8 @@ Beyond plan-implement-review, the harness provides advanced workflows:
 This file is a guidebook, not an encyclopedia. The details live in:
 
 - **Rules** (`.claude/rules/common/`, `.claude/rules/csharp/`) — auto-loaded coding standards, XR constraints, testing
-- **Skills** (`.claude/skills/`) — 24 slash commands for planning, review, profiling, learning, sessions
-- **Agents** (`.claude/agents/`) — 16 specialist agents routed automatically by domain
+- **Skills** (`.claude/skills/`) — 14 slash commands for planning, review, profiling, and discovery
+- **Agents** (`.claude/agents/`) — 14 specialist agents routed automatically by domain
 - **Templates** (`.claude/docs/templates/`) — 14 document templates for design, production, and release artifacts
 - **Scripts** (`.claude/scripts/lib/`) — 3 Node.js session management utilities
 - **MCP Servers** (`.mcp.json`) — 5 pre-configured servers: GitHub, Context7, Exa, Figma, Unity MCP

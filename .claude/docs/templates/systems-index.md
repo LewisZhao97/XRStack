@@ -142,4 +142,4 @@ These should be prototyped early regardless of priority tier.]
 - [ ] Design MVP-tier systems first (use `/design-system [system-name]`)
 - [ ] Run `/design-review` on each completed GDD
 - [ ] Run `/milestone-gate pre-production` when MVP systems are designed
-- [ ] Prototype the highest-risk system early (`/prototype [system]`)
+- [ ] Plan the highest-risk system first (`/feature-plan [system]`)

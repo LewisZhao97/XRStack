@@ -13,9 +13,8 @@
 | xr-specialist | XR development authority | XR interaction, tracking, spatial UI |
 | unity-xri-specialist | XRI implementation | XR Interaction Toolkit components |
 | unity-technical-artist | Shaders, VFX, render pipeline | Shader Graph, HLSL, compute, VFX Graph, render features, post-processing |
-| openxr-runtime-specialist | OpenXR runtime/SDK | Runtime layer, OpenXR compliance |
+| openxr-runtime-specialist | OpenXR runtime/SDK | Runtime layer, OpenXR compliance (kept for future use; not active on the current vendor stack) |
 | platform-specialist | Platform builds | XR glasses (standalone) and PC streaming deployment |
-| sdk-developer | SDK architecture | Public API, versioning, documentation |
 
 ### Development Agents
 
@@ -23,7 +22,7 @@
 |-------|---------|-------------|
 | lead-programmer | Code architecture | API design, code review, refactoring |
 | gameplay-programmer | Feature implementation | Interaction systems, app logic |
-| technical-director | Technical authority | Architecture decisions, tech choices |
+| technical-director | Technical authority | Architecture-level decisions, technology evaluations, cross-system technical conflicts |
 | performance-analyst | Profiling | XR performance, frame budget analysis |
 | tools-programmer | Internal tools | Editor extensions, pipeline automation |
 | ui-programmer | UI systems | Spatial UI, world-space canvas |
@@ -34,7 +33,6 @@
 | Agent | Purpose | When to Use |
 |-------|---------|-------------|
 | qa-lead | Test strategy & execution | Test plans, test cases, bug reports, quality gates |
-| producer | Coordination & release | Feature & milestone planning, release readiness |
 
 ## Immediate Agent Usage
 
@@ -43,7 +41,6 @@ No user prompt needed:
 2. Code just written/modified → Use **lead-programmer** for review
 3. Performance concerns → Use **performance-analyst** agent
 4. Platform-specific issues → Use **platform-specialist** agent
-5. SDK API changes → Use **sdk-developer** agent
 
 ## Parallel Task Execution
 
